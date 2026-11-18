@@ -71,7 +71,7 @@ export const hero = {
   ],
 
   intro:
-    'I build software end to end, and lately that software thinks. Five years in, I have shipped enterprise web apps, an AI shopping assistant that went live in online stores, and now hiring intelligence built to meet compliance rules for AI in hiring. Database to UI, prompt to production.',
+    'I build software end to end, and lately that software thinks. Five years in, I have shipped enterprise web apps, an AI shopping assistant that went live in online stores, and now hiring intelligence built to meet compliance rules for AI . Database to UI, prompt to production.',
 
   // Buttons under the intro. `variant: 'hot'` makes the filled apricot button.
   actions: [

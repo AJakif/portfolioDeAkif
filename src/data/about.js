@@ -19,8 +19,6 @@ export const profileRows = [
   { label: 'Base', value: 'Dhaka, Bangladesh' },
   { label: 'Day job', value: 'AI Engineer, Inument Solution Limited' },
   { label: 'Experience', value: '5+ years, full stack to generative AI' },
-  { label: 'AI', value: 'Multi-agent systems, RAG, MCP, speech, evaluation' },
-  { label: 'Software', value: 'Python, React, Angular, .NET Core, FastAPI, SQL, AWS' },
   { label: 'Studied', value: 'BSc CSE (data science major), AIUB' },
   { label: 'Off screen', value: 'Street and landscape photography, pencil sketching' },
   { label: 'Speaks', value: 'Bengali, English, some Hindi' },

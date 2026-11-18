@@ -28,7 +28,7 @@ export const jobs = [
       'I build the AI and the infrastructure behind Hire-a-Mind, a hiring intelligence platform that runs from job description to offer, with people making every final call.',
     highlights: [
       'Built the AI interviewer from scratch: smooth voice interviews with greetings, follow-up questions and saved transcripts',
-      'Built the platform to meet compliance rules for AI in hiring: GDPR, the EU AI Act, NYC Local Law 144, EEOC guidance, SOC 2 and ISO 27001',
+      'Built the platform to meet compliance rules for AI : GDPR, the EU AI Act, NYC Local Law 144, EEOC guidance, SOC 2 and ISO 27001',
       'Built a four-agent LangGraph orchestrator for isolated, criteria-driven candidate scoring',
       'Built a production MCP server, so Claude, ChatGPT or Gemini can query evaluation data in plain language with no extra UI',
       'Architected a dual-vector RAG pipeline on PGVector and ChromaDB, with caching for user data and system prompts',

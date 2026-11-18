@@ -43,7 +43,7 @@ export const projects = [
     },
     built: [
       'The AI interviewer, built from scratch: smooth voice interviews that greet the candidate, ask follow-up questions based on each answer, and save the full transcript',
-      'Built to meet the compliance rules for AI in hiring: GDPR, the EU AI Act, NYC Local Law 144, EEOC guidance, SOC 2 and ISO 27001',
+      'Built to meet the compliance rules for AI : GDPR, the EU AI Act, NYC Local Law 144, EEOC guidance, SOC 2 and ISO 27001',
       'A four-agent LangGraph orchestrator that scores each criterion in isolation: Capability, Communication, Behavioral, and Potential and fit',
       'Scoring on a BARS 1 to 5 rubric, combined with role-specific weights and a confidence adjustment; borderline and knockout results go to a human reviewer',
       'A dual-vector RAG pipeline on PGVector and ChromaDB, with hybrid caching of user data and system prompts to cut token cost',
