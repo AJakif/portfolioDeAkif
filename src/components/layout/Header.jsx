@@ -21,7 +21,8 @@ export default function Header() {
     <header className="header">
       <div className="wrap header__inner">
         <div className="header__brand">
-          <Link className="header__brand-name" to="/">
+          {/* .glitch + data-text: see src/styles/glitch.css */}
+          <Link className="header__brand-name glitch" to="/" data-text={profile.shortName}>
             {profile.shortName}
           </Link>
 

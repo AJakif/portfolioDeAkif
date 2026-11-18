@@ -12,6 +12,7 @@ import { HashRouter } from 'react-router-dom';
 
 import './styles/tokens.css'; // colors, fonts, spacing (must come first)
 import './styles/global.css'; // base styles shared by every page
+import './styles/glitch.css'; // reusable .glitch text effect (hero name, header logo)
 
 import App from './App.jsx';
 

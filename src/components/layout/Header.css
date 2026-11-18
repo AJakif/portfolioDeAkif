@@ -28,6 +28,16 @@
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.05rem;
+  --glitch-amp: 0.5px; /* smaller jumps for small text */
+}
+
+/* The logo glitches a bit more often than the hero name (every 3.5s vs 4.5s),
+   starting offset so the two rarely fire together. */
+.header__brand-name,
+.header__brand-name::before,
+.header__brand-name::after {
+  animation-duration: 3.5s;
+  animation-delay: -1.5s;
 }
 
 .header__brand-kana {

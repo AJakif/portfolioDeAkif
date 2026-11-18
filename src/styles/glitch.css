@@ -1,0 +1,93 @@
+/**
+ * glitch.css — a reusable glitch effect for text.
+ *
+ * Usage: add class="glitch" and data-text="<same text>" to an element.
+ *   <h1 className="glitch" data-text="Akif">Akif</h1>
+ *
+ * Two copies of the text (from data-text) sit exactly on top of the real
+ * one, tinted periwinkle and apricot. Most of the time they're hidden;
+ * every ~4.5s they burst for a split second, each showing only thin
+ * horizontal slices (clip-path) shifted sideways. Hovering triggers a
+ * faster glitch.
+ *
+ * Knobs (set on the element):
+ *   --glitch-amp   : how far slices jump. 1px = full size (big headings);
+ *                    use smaller values for small text. Default 1px.
+ *   animation-delay: offset one glitch from another so they don't fire
+ *                    at the same moment. Apply it to the element AND its
+ *                    ::before/::after.
+ */
+
+.glitch {
+  --glitch-amp: 1px;
+  position: relative; /* anchors the two copies */
+  display: inline-block; /* so the copies match the text box, not a full row */
+  animation: glitch-shake 4.5s infinite steps(1);
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  content: attr(data-text) / ''; /* empty alt text: screen readers read the text once */
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  animation: inherit;
+}
+
+.glitch::before {
+  color: var(--peri);
+  text-shadow: calc(-2 * var(--glitch-amp)) 0 var(--peri);
+  animation-name: glitch-a;
+}
+
+.glitch::after {
+  color: var(--apricot);
+  text-shadow: calc(2 * var(--glitch-amp)) 0 var(--apricot);
+  animation-name: glitch-b;
+}
+
+.glitch:hover,
+.glitch:hover::before,
+.glitch:hover::after {
+  animation-duration: 1.2s;
+}
+
+/* The burst lives in the last ~12% of each cycle; the rest is calm. */
+@keyframes glitch-a {
+  0%, 87% { opacity: 0; transform: none; clip-path: inset(0 0 100% 0); }
+  88%  { opacity: 1; transform: translateX(calc(-4 * var(--glitch-amp))); clip-path: inset(8% 0 72% 0); }
+  90%  { opacity: 1; transform: translateX(calc(5 * var(--glitch-amp)));  clip-path: inset(55% 0 20% 0); }
+  92%  { opacity: 1; transform: translateX(calc(-6 * var(--glitch-amp))); clip-path: inset(30% 0 52% 0); }
+  94%  { opacity: 1; transform: translateX(calc(3 * var(--glitch-amp)));  clip-path: inset(78% 0 4% 0); }
+  96%  { opacity: 1; transform: translateX(calc(-2 * var(--glitch-amp))); clip-path: inset(15% 0 66% 0); }
+  98%, 100% { opacity: 0; transform: none; clip-path: inset(0 0 100% 0); }
+}
+
+@keyframes glitch-b {
+  0%, 87% { opacity: 0; transform: none; clip-path: inset(0 0 100% 0); }
+  88%  { opacity: 1; transform: translateX(calc(5 * var(--glitch-amp)));  clip-path: inset(62% 0 14% 0); }
+  90%  { opacity: 1; transform: translateX(calc(-4 * var(--glitch-amp))); clip-path: inset(12% 0 70% 0); }
+  92%  { opacity: 1; transform: translateX(calc(6 * var(--glitch-amp)));  clip-path: inset(44% 0 36% 0); }
+  94%  { opacity: 1; transform: translateX(calc(-3 * var(--glitch-amp))); clip-path: inset(2% 0 84% 0); }
+  96%  { opacity: 1; transform: translateX(calc(2 * var(--glitch-amp)));  clip-path: inset(70% 0 10% 0); }
+  98%, 100% { opacity: 0; transform: none; clip-path: inset(0 0 100% 0); }
+}
+
+/* A tiny jolt of the real text during the burst. */
+@keyframes glitch-shake {
+  0%, 87%, 98%, 100% { transform: none; }
+  89% { transform: translate(calc(-1 * var(--glitch-amp)), var(--glitch-amp)) skewX(-4deg); }
+  93% { transform: translate(calc(2 * var(--glitch-amp)), calc(-1 * var(--glitch-amp))) skewX(3deg); }
+  95% { transform: translateX(calc(-1 * var(--glitch-amp))); }
+}
+
+/* People who've asked their OS for less motion get plain text. */
+@media (prefers-reduced-motion: reduce) {
+  .glitch,
+  .glitch::before,
+  .glitch::after {
+    animation: none;
+  }
+}

@@ -32,7 +32,10 @@ export default function Hero() {
           </span>
 
           <p className="hero__greeting">{hero.greeting}</p>
-          <h1 className="hero__name">{profile.name}</h1>
+          {/* .glitch + data-text: see src/styles/glitch.css */}
+          <h1 className="hero__name glitch" data-text={profile.name}>
+            {profile.name}
+          </h1>
 
           <TypedRole roles={hero.roles} />
 
