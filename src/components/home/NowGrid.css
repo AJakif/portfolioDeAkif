@@ -1,0 +1,73 @@
+/* NowGrid — "right now" cards. */
+
+.now-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.now-grid__card {
+  position: relative;
+  overflow: hidden; /* clips the corner decoration */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* The diamond in the top-right corner that grows on hover. */
+.now-grid__card::after {
+  content: '';
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 120px;
+  height: 120px;
+  background: var(--peri);
+  opacity: 0.12;
+  transform: rotate(45deg);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.now-grid__card:hover {
+  border-color: var(--peri);
+}
+
+.now-grid__card:hover::after {
+  opacity: 0.3;
+  transform: rotate(45deg) scale(1.25);
+}
+
+.now-grid__tag {
+  color: var(--apricot);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.now-grid__title {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.now-grid__text {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* Phones: one card per row. */
+@media (max-width: 640px) {
+  .now-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .now-grid__card::after {
+    transition: none;
+  }
+}

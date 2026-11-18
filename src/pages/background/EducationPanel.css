@@ -1,0 +1,18 @@
+/* EducationPanel — spacing around the education timeline and research cards. */
+
+.education-panel__timeline {
+  margin-top: 36px;
+}
+
+.education-panel__research {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Tablets and phones: one card per row. */
+@media (max-width: 900px) {
+  .education-panel__research {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

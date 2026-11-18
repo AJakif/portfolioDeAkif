@@ -1,0 +1,12 @@
+/* ExperiencePanel — spacing around the work timeline and the talks. */
+
+.experience-panel__timeline {
+  margin-top: 36px;
+}
+
+.experience-panel__talks {
+  display: grid;
+  /* As many columns as fit, each at least 320px wide. */
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 16px;
+}

@@ -1,0 +1,38 @@
+/* SegmentedNav — tab switch on the Background page. */
+
+.segmented-nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 24px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+}
+
+.segmented-nav__link {
+  padding: 9px 22px;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.segmented-nav__link:hover {
+  color: var(--text);
+}
+
+/* ".active" is added by NavLink for the current tab. */
+.segmented-nav__link.active {
+  background: var(--peri);
+  color: var(--on-apricot);
+}
+
+/* Phones: slightly smaller so all three tabs fit on one line. */
+@media (max-width: 640px) {
+  .segmented-nav__link {
+    padding: 9px 15px;
+    font-size: 0.95rem;
+  }
+}

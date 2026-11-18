@@ -1,0 +1,73 @@
+/* ProfileCard — the "character sheet". */
+
+/* Gradient border trick: a gradient background with 3px padding,
+   and a solid inner card on top. The 3px that shows is the "border". */
+.profile-card {
+  padding: 3px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(140deg, var(--peri), var(--apricot));
+}
+
+.profile-card__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 26px;
+  border-radius: 21px; /* outer radius (24px) minus the 3px border */
+  background: var(--panel);
+}
+
+.profile-card__top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-card__avatar {
+  flex: none;
+  display: grid;
+  place-items: center; /* centers the character */
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: var(--apricot);
+  color: var(--on-apricot);
+  font-family: var(--font-kana);
+  font-size: 2rem;
+  transform: rotate(-4deg); /* slight tilt */
+}
+
+.profile-card__name {
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.profile-card__role {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Each row: label on the left, value on the right. */
+.profile-card__row {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+.profile-card__row dt {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.profile-card__row dd {
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .profile-card__row {
+    grid-template-columns: 92px minmax(0, 1fr);
+  }
+}

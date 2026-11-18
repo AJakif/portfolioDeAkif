@@ -1,0 +1,45 @@
+/* Header — sticky top bar. */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30; /* above page content, below the page-change wipe (50) */
+  padding: 14px 0;
+  /* Fades out at the bottom so content scrolls under it smoothly. */
+  background: linear-gradient(var(--bg) 55%, transparent);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header__brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.header__brand-name {
+  color: var(--text);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.header__brand-kana {
+  font-family: var(--font-kana);
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--apricot);
+}
+
+/* Phones: hide the copy button; the menu moves to the bottom (see Dock.css). */
+@media (max-width: 640px) {
+  .header__copy {
+    display: none;
+  }
+}

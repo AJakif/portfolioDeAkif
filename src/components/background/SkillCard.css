@@ -1,0 +1,28 @@
+/* SkillCard — one skill area. */
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.skill-card__title {
+  font-weight: 700;
+  font-size: 1.12rem;
+  line-height: 1.3;
+}
+
+.skill-card__used {
+  margin-top: auto; /* pushes this line to the bottom so cards line up */
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.skill-card__used b {
+  color: var(--text);
+  font-weight: 500;
+}

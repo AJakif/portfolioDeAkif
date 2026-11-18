@@ -1,0 +1,17 @@
+/* MoreList — short notes in columns. */
+
+.more-list {
+  display: grid;
+  /* As many columns as fit, each at least 240px wide. */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px 32px;
+}
+
+.more-list__title {
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+.more-list__text {
+  color: var(--muted);
+}

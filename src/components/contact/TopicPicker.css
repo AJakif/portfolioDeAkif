@@ -1,0 +1,27 @@
+/* TopicPicker — topic buttons on the Contact page. */
+
+.topic-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic-picker__button {
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.topic-picker__button:hover {
+  border-color: var(--peri);
+}
+
+/* The selected topic. */
+.topic-picker__button[aria-pressed='true'] {
+  background: var(--peri);
+  border-color: var(--peri);
+  color: var(--on-apricot);
+}

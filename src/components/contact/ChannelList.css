@@ -1,0 +1,53 @@
+/* ChannelList — contact rows. */
+
+.channel-list {
+  border-bottom: 1px solid var(--line);
+}
+
+.channel-list__item {
+  border-top: 1px solid var(--line);
+}
+
+.channel-list__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 20px;
+  padding: 22px 0;
+  color: var(--text);
+  text-decoration: none;
+  transition: padding 0.18s;
+}
+
+/* Clickable rows slide right a little on hover. */
+.channel-list__row--link:hover {
+  padding-left: 14px;
+  color: var(--apricot);
+}
+
+.channel-list__label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.channel-list__value {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.98rem, 2.3vw, 1.4rem);
+  overflow-wrap: anywhere; /* a long address wraps instead of overflowing */
+}
+
+.channel-list__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .channel-list__row {
+    transition: none;
+  }
+}

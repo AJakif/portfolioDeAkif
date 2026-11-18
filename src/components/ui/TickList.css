@@ -1,0 +1,24 @@
+/* TickList — bullets with diamond markers. */
+
+.tick-list {
+  display: grid;
+  gap: 10px;
+  max-width: 70ch; /* keeps lines comfortable to read */
+}
+
+.tick-list__item {
+  position: relative;
+  padding-left: 26px;
+}
+
+/* The diamond: a small square rotated 45 degrees. */
+.tick-list__item::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.5em;
+  width: 10px;
+  height: 10px;
+  background: var(--apricot);
+  transform: rotate(45deg);
+}

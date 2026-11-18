@@ -1,0 +1,14 @@
+/* RulesGrid — three cards per row. */
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+/* Tablets and phones: one per row. */
+@media (max-width: 900px) {
+  .rules-grid {
+    grid-template-columns: 1fr;
+  }
+}

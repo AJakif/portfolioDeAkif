@@ -1,0 +1,10 @@
+/* SkillsPanel — responsive grid of skill cards. */
+
+.skills-panel {
+  display: grid;
+  /* As many columns as fit, each at least 310px wide.
+     min(310px, 100%) stops cards overflowing on very narrow phones. */
+  grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}

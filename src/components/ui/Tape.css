@@ -1,0 +1,58 @@
+/* Tape — tilted scrolling band. */
+
+/* The outer box hides the parts of the tilted band that stick out. */
+.tape {
+  overflow: hidden;
+  padding: 26px 0;
+  /*
+   * Break out of .wrap's max-width so the band reaches the true screen
+   * edges, not just the edge of the centered content column.
+   */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.tape__band {
+  padding: 12px 0;
+  background: var(--apricot);
+  color: var(--on-apricot);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transform: rotate(-1.6deg) scale(1.04); /* the tilt */
+}
+
+.tape__track {
+  display: inline-flex;
+  /* Slower = bigger number. */
+  animation: tape-slide 40s linear infinite;
+}
+
+.tape__word {
+  padding-right: 28px;
+}
+
+/* The little star between words. */
+.tape__word::after {
+  content: '✦';
+  margin-left: 28px;
+}
+
+/* Slide by one copy of the list: 100% / 4 copies = 25% (see COPIES in Tape.jsx). */
+@keyframes tape-slide {
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+/* Visitors who prefer less motion get a still band. */
+@media (prefers-reduced-motion: reduce) {
+  .tape__track {
+    animation: none;
+  }
+}

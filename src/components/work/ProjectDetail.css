@@ -1,0 +1,80 @@
+/* ProjectDetail — the panel for one project. */
+
+.project-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 26px; /* space between the sections */
+  min-width: 0; /* lets long words wrap instead of stretching the grid */
+  padding: clamp(22px, 4vw, 44px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+}
+
+.project-detail__kind {
+  color: var(--apricot);
+  font-weight: 700;
+}
+
+.project-detail__name {
+  font-weight: 800;
+  font-size: clamp(1.7rem, 4vw, 2.7rem);
+  line-height: 1.08;
+}
+
+/* Quick facts: as many boxes per row as fit. */
+.project-detail__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.project-detail__meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--panel-2);
+}
+
+.project-detail__meta-item dt {
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.project-detail__meta-item dd {
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* Small periwinkle heading above each section. */
+.project-detail__heading {
+  margin-bottom: 10px;
+  color: var(--peri);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: 0;
+}
+
+.project-detail__prose {
+  max-width: 66ch;
+  font-size: 1.08rem;
+}
+
+/* The highlighted key idea. */
+.project-detail__idea {
+  max-width: 34ch;
+  padding: 6px 0 6px 18px;
+  border-left: 4px solid var(--apricot);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.35;
+}
+
+.project-detail__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

@@ -1,0 +1,93 @@
+/* Hero — opening section of the Home page. */
+
+.hero {
+  position: relative;
+  /* Creates a private stacking area so the negative z-index layers
+     (canvas, katakana) stay inside the hero and behind its text. */
+  isolation: isolate;
+}
+
+/* The vertical katakana on the right. */
+.hero__kana {
+  position: absolute;
+  right: var(--gutter);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+  writing-mode: vertical-rl; /* stack the characters top to bottom */
+  white-space: nowrap;
+  font-family: var(--font-kana);
+  font-size: clamp(5.5rem, 13vw, 10.5rem);
+  line-height: 1;
+  /* Outline-only letters: transparent fill plus a thin stroke. */
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(142, 152, 255, 0.42);
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  max-width: 800px;
+  padding: clamp(48px, 9vw, 120px) 0 clamp(56px, 8vw, 104px);
+}
+
+/* The small "Dhaka, Bangladesh" pill. */
+.hero__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(20, 27, 48, 0.8);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.hero__chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--apricot);
+  box-shadow: 0 0 0 4px rgba(255, 178, 122, 0.2); /* soft glow ring */
+}
+
+.hero__greeting {
+  margin-bottom: -14px; /* pulls the name closer to "Hi, I'm" */
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.05rem, 2.2vw, 1.5rem);
+}
+
+.hero__name {
+  font-weight: 800;
+  font-size: clamp(2.1rem, 5.8vw, 4.4rem);
+  line-height: 1.06;
+}
+
+.hero__intro {
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 1.7vw, 1.3rem);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Phones: move the katakana to the top corner and make it fainter. */
+@media (max-width: 640px) {
+  .hero__kana {
+    top: 12px;
+    transform: none;
+    font-size: 6.5rem;
+    -webkit-text-stroke-color: rgba(142, 152, 255, 0.26);
+  }
+}

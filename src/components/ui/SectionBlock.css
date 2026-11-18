@@ -1,0 +1,21 @@
+/* SectionBlock — a titled section inside a page. */
+
+.section-block {
+  padding-top: clamp(48px, 7vw, 88px); /* space above each section */
+}
+
+.section-block__title {
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+  line-height: 1.15;
+}
+
+.section-block__intro {
+  max-width: 60ch;
+  margin-top: 10px;
+  color: var(--muted);
+}
+
+.section-block__body {
+  margin-top: 24px;
+}

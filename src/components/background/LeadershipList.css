@@ -1,0 +1,27 @@
+/* LeadershipList — simple divided rows. */
+
+.leadership-list {
+  border-bottom: 1px solid var(--line);
+}
+
+.leadership-list__row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* role on the left, duration on the right */
+  gap: 4px 24px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+}
+
+.leadership-list__role {
+  font-weight: 700;
+}
+
+.leadership-list__org,
+.leadership-list__duration {
+  color: var(--muted);
+}
+
+.leadership-list__duration {
+  font-variant-numeric: tabular-nums; /* digits line up between rows */
+}

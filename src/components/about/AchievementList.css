@@ -1,0 +1,51 @@
+/* AchievementList — "unlocked" cards. */
+
+.achievement-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.achievement-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+/* The small square with the badge text. */
+.achievement-list__badge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--peri);
+  border-radius: 12px;
+  background: var(--panel-2);
+  color: var(--apricot);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.achievement-list__title {
+  display: block;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.achievement-list__text {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+/* Tablets and phones: one per row. */
+@media (max-width: 900px) {
+  .achievement-list {
+    grid-template-columns: 1fr;
+  }
+}

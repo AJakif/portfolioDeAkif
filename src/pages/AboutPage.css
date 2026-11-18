@@ -1,0 +1,23 @@
+/* AboutPage — story beside the profile card. */
+
+.about-page__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+/* Recommendation cards: as many columns as fit, each at least 320px wide. */
+.about-page__quotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 16px;
+}
+
+/* Tablets and phones: the card drops below the story. */
+@media (max-width: 900px) {
+  .about-page__intro {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

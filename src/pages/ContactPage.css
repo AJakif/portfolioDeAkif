@@ -1,0 +1,64 @@
+/* ContactPage — two columns: heading on the left, channels on the right. */
+
+.contact-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 32px 56px;
+  align-items: start;
+  padding-top: clamp(32px, 6vw, 80px);
+}
+
+.contact-page__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+
+.contact-page__heading {
+  font-weight: 800;
+  font-size: clamp(2.6rem, 8.4vw, 6.2rem);
+  line-height: 0.98;
+}
+
+.contact-page__intro {
+  max-width: 40ch;
+  color: var(--muted);
+  font-size: 1.15rem;
+}
+
+.contact-page__right {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* "What's it about?" */
+.contact-page__question {
+  color: var(--peri);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+}
+
+.contact-page__subject {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.contact-page__subject b {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.contact-page__tape {
+  margin-top: clamp(32px, 6vw, 64px);
+}
+
+/* Tablets and phones: stack the columns. */
+@media (max-width: 900px) {
+  .contact-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

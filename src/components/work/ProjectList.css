@@ -1,0 +1,66 @@
+/* ProjectList — project picker on the Work page. */
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  /* Stays in view while the long project detail scrolls. */
+  position: sticky;
+  top: 84px;
+}
+
+.project-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.project-list__item:hover {
+  border-color: var(--peri);
+}
+
+.project-list__name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+.project-list__short {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* The selected project. */
+.project-list__item--current {
+  background: var(--apricot);
+  border-color: var(--apricot);
+  color: var(--on-apricot);
+}
+
+.project-list__item--current .project-list__short {
+  color: var(--on-apricot);
+}
+
+/* Tablets and phones: a sideways-scrolling row above the detail. */
+@media (max-width: 900px) {
+  .project-list {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+  }
+
+  .project-list__item {
+    flex: none; /* keep each item at its natural width */
+  }
+
+  .project-list__short {
+    display: none;
+  }
+}

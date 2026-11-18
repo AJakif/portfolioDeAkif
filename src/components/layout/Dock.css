@@ -1,0 +1,51 @@
+/* Dock — the main menu pill. */
+
+.dock {
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(20, 27, 48, 0.86);
+  /* Blurs whatever scrolls behind the menu. */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dock__link {
+  padding: 8px 18px;
+  border-radius: 999px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.dock__link:hover {
+  color: var(--text);
+}
+
+/* ".active" is added by NavLink for the current page. */
+.dock__link.active {
+  background: var(--apricot);
+  color: var(--on-apricot);
+}
+
+/* Phones: the menu floats at the bottom of the screen, like an app tab bar. */
+@media (max-width: 640px) {
+  .dock {
+    position: fixed;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    z-index: 40;
+    max-width: calc(100vw - 16px);
+    overflow-x: auto; /* very narrow screens can scroll the menu sideways */
+  }
+
+  .dock__link {
+    padding: 9px 11px;
+    font-size: 0.86rem;
+  }
+}

@@ -1,0 +1,138 @@
+/* Tooltip — glossary card that opens on hover, keyboard focus or tap. */
+
+.tooltip {
+  position: relative; /* the card is positioned against this box */
+  display: inline-block;
+}
+
+/* The word people hover. A dotted apricot underline hints that it explains itself. */
+.tooltip__trigger {
+  padding: 0;
+  border: 0;
+  border-bottom: 2px dotted var(--apricot);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: help;
+}
+
+/* For triggers that are a shape (the avatar), not text. */
+.tooltip__trigger--plain {
+  border-bottom: 0;
+}
+
+/* The card. Hidden until the trigger is hovered or focused. */
+.tooltip__bubble {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 14px); /* sits above the trigger, with room for the pointer */
+  z-index: 60;
+  display: grid;
+  gap: 6px;
+  width: max-content;
+  max-width: min(280px, calc(100vw - 32px));
+  padding: var(--space-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--panel-2);
+  box-shadow: var(--shadow-pop);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-align: left;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 6px); /* starts slightly lower, then rises into place */
+  transition: opacity 0.16s, transform 0.16s, visibility 0.16s;
+}
+
+/* Open on hover, on keyboard focus, or when .tooltip--open is added by hand. */
+.tooltip:hover .tooltip__bubble,
+.tooltip:focus-within .tooltip__bubble,
+.tooltip--open .tooltip__bubble {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* The little diamond that points at the word. */
+.tooltip__bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-right: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--panel-2);
+  transform: rotate(45deg);
+}
+
+.tooltip__word {
+  color: var(--apricot);
+  font-family: var(--font-kana);
+  font-size: 1.7rem;
+  line-height: 1.15;
+}
+
+.tooltip__say {
+  font-weight: 700;
+}
+
+/* The "sounds like ..." part is quieter. */
+.tooltip__say span {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.tooltip__meaning {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+/* ---- placement="below": the card opens under the trigger ---- */
+.tooltip--below .tooltip__bubble {
+  top: calc(100% + 14px);
+  bottom: auto;
+  transform: translate(-50%, -6px);
+}
+
+.tooltip--below .tooltip__bubble::after {
+  top: 0;
+  border: 0;
+  border-left: 1px solid var(--line-strong);
+  border-top: 1px solid var(--line-strong);
+}
+
+/* ---- align="start": the card lines up with the trigger's left edge ---- */
+.tooltip--start .tooltip__bubble {
+  left: 0;
+  transform: translate(0, 6px);
+}
+
+.tooltip--start.tooltip--below .tooltip__bubble {
+  transform: translate(0, -6px);
+}
+
+.tooltip--start:hover .tooltip__bubble,
+.tooltip--start:focus-within .tooltip__bubble,
+.tooltip--start.tooltip--open .tooltip__bubble {
+  transform: translate(0, 0);
+}
+
+.tooltip--start .tooltip__bubble::after {
+  left: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip__bubble {
+    transition: none;
+  }
+}

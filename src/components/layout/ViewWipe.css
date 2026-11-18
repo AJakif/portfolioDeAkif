@@ -1,0 +1,37 @@
+/* ViewWipe — the diagonal swipe between pages, carrying the katakana name. */
+
+.view-wipe {
+  position: fixed;
+  inset: -10% -30%; /* larger than the screen so the slanted edges stay hidden */
+  z-index: 50; /* above everything */
+  display: grid;
+  place-items: center; /* centers the name; the panel's center is the screen's center */
+  background: var(--apricot);
+  pointer-events: none; /* never blocks clicks */
+
+  /* Covers the screen, holds for a moment so the name can be read,
+     then slides away to the right. Change 0.8s to make it faster or slower. */
+  animation: view-wipe-out 0.8s cubic-bezier(0.7, 0, 0.25, 1) forwards;
+}
+
+.view-wipe__name {
+  color: var(--on-apricot);
+  font-family: var(--font-kana);
+  font-size: clamp(4rem, 16vw, 11rem);
+  line-height: 1;
+  white-space: nowrap;
+  /* The panel is slanted -14deg. Slanting the text +14deg cancels that out,
+     so the letters stand upright. */
+  transform: skewX(14deg);
+}
+
+@keyframes view-wipe-out {
+  /* 0% to 35%: stay put (the "hold"). */
+  from,
+  35% {
+    transform: translateX(0) skewX(-14deg);
+  }
+  to {
+    transform: translateX(115%) skewX(-14deg);
+  }
+}

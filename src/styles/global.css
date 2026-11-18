@@ -1,0 +1,87 @@
+/*
+ * global.css — base styles shared by every page.
+ *
+ * Keep this file small. Styles for a specific component belong in that
+ * component's own .css file, right next to its .jsx file.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* the tilted tape must never cause sideways scrolling */
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-wrap: balance; /* nicer line breaks in headings */
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  color: var(--peri);
+  text-underline-offset: 0.2em;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* A clear outline for people who navigate with the keyboard. */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--apricot);
+  outline-offset: 3px;
+}
+
+/*
+ * .wrap centers content and adds the side padding.
+ * Use it as the outer element of any full-width section.
+ */
+.wrap {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* On phones the menu floats at the bottom, so leave room under the page. */
+@media (max-width: 640px) {
+  body {
+    padding-bottom: 76px;
+  }
+}

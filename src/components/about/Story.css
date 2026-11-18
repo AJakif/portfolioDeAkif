@@ -1,0 +1,15 @@
+/* Story — "about me" paragraphs. */
+
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 62ch;
+  font-size: 1.1rem;
+}
+
+/* The opening line is larger. */
+.story p:first-child {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}

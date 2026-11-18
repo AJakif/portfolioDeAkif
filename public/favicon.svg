@@ -1,0 +1,5 @@
+<!-- Browser tab icon: the katakana "ア" (the first character of "Akif") on apricot. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#ffb27a" />
+  <text x="32" y="45" text-anchor="middle" font-size="36" font-weight="700" font-family="sans-serif" fill="#141a30">ア</text>
+</svg>

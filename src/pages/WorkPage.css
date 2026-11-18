@@ -1,0 +1,16 @@
+/* WorkPage — two-column layout: project list + project detail. */
+
+.work-page__grid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+/* Tablets and phones: the list sits above the detail. */
+@media (max-width: 900px) {
+  .work-page__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

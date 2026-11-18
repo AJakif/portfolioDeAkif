@@ -1,0 +1,52 @@
+/*
+ * tokens.css — the design tokens (the site's "theme settings").
+ *
+ * Every color, font and shared size in the site comes from a variable here.
+ * To re-theme the whole site, change the values in this file only.
+ * These are the same tokens as in the Akif Portfolio design system; keep the two in step.
+ * Components use them like this:  color: var(--apricot);
+ */
+:root {
+  /* ---- Colors ---- */
+  --bg: #0c1120; /* page background (midnight) */
+  --panel: #141b30; /* cards and panels */
+  --panel-2: #1b2442; /* a slightly lighter panel, for boxes inside cards */
+  --panel-glass: rgba(20, 27, 48, 0.86); /* see-through panel for things that float over content */
+  --line: #2a3560; /* decorative borders and divider lines */
+  --line-strong: #6471a8; /* borders that MUST be visible: form fields, tooltips */
+  --text: #eef0fb; /* main text */
+  --muted: #9ca5c9; /* secondary text */
+  --peri: #8e98ff; /* periwinkle: links and secondary highlights */
+  --apricot: #ffb27a; /* apricot: the main accent (buttons, active states) */
+  --apricot-hover: #ffc59b; /* a lighter apricot, for hovering a filled button */
+  --on-apricot: #141a30; /* text color to use ON TOP of apricot or periwinkle */
+
+  /* ---- Fonts (loaded in index.html) ---- */
+  --font-display: 'Unbounded', 'Arial Black', system-ui, sans-serif; /* headings */
+  --font-body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif; /* paragraphs */
+  --font-kana: 'Dela Gothic One', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; /* katakana */
+
+  /* ---- Spacing scale (use these for gaps and padding in new components) ---- */
+  --space-1: 4px; /* hairline gaps */
+  --space-2: 8px; /* between tags or small items */
+  --space-3: 12px; /* inside a card, between tag, title and text */
+  --space-4: 16px; /* between cards in a grid */
+  --space-5: 24px; /* card padding */
+  --space-6: 32px; /* between a page title and its content */
+  --space-7: 48px; /* between sections */
+
+  /* ---- Layout ---- */
+  --gutter: clamp(16px, 4vw, 44px); /* left/right page padding; shrinks on phones */
+  --page-width: 1160px; /* maximum content width */
+  --radius-sm: 14px; /* boxes inside cards, form fields, tooltips */
+  --radius: 18px; /* default corner radius for cards */
+  --radius-lg: 24px; /* larger cards */
+  --radius-pill: 999px; /* fully rounded: buttons, tags, menus */
+
+  /* ---- Shadow ---- */
+  /* Only for things that float above the page, such as a tooltip. Cards have no shadow. */
+  --shadow-pop: 0 12px 32px rgba(4, 7, 16, 0.55);
+
+  /* Tell the browser this is a dark site (styles scrollbars and form controls). */
+  color-scheme: dark;
+}

@@ -1,0 +1,18 @@
+/* ViewHeader — big page title. */
+
+.view-header {
+  padding-top: clamp(32px, 6vw, 72px);
+}
+
+.view-header__title {
+  font-weight: 800;
+  font-size: clamp(2rem, 5.4vw, 3.75rem);
+  line-height: 1.05;
+}
+
+/* An intro paragraph placed directly under the title. */
+.view-header > p {
+  max-width: 60ch;
+  margin-top: 10px;
+  color: var(--muted);
+}
