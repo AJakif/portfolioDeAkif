@@ -106,11 +106,18 @@ export const now = [
     text: 'AI engineer and technical owner of an interview intelligence platform.',
   },
   {
-    projectId: 'sireio',
-    tag: 'Co-founder and CTO',
-    title: 'Sireio',
-    text: 'A wellbeing app for expectant and new fathers in the UK.',
+    projectId: 'elx',
+    tag: 'Echologyx',
+    title: 'ELX Chatbot',
+    text: 'AI shopping assistant that grew from a demo into a live Shopify app.',
   },
+  // Sireio: commented out for now, will open it up in the future.
+  // {
+  //   projectId: 'sireio',
+  //   tag: 'Co-founder and CTO',
+  //   title: 'Sireio',
+  //   text: 'A wellbeing app for expectant and new fathers in the UK.',
+  // },
   {
     projectId: 'querio',
     tag: 'Open source',

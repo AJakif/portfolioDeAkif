@@ -47,8 +47,9 @@ export const research = [
     text: 'Pencil is a study of Bangla authorship style on small on-device models, with pass and fail criteria set before each experiment.',
     projectId: 'pencil',
   },
-  {
-    title: 'Research behind Sireio',
-    text: 'A framework that combines just-in-time adaptive interventions, self-efficacy theory and attachment theory, mapped to validated clinical instruments.',
-  },
+  // Sireio: commented out for now, will open it up in the future.
+  // {
+  //   title: 'Research behind Sireio',
+  //   text: 'A framework that combines just-in-time adaptive interventions, self-efficacy theory and attachment theory, mapped to validated clinical instruments.',
+  // },
 ];

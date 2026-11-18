@@ -28,7 +28,7 @@ export default function WorkPage() {
   return (
     <div className="wrap">
       <ViewHeader title="Work">
-        <p>Five systems. Two are live products, one is my startup, one is open source and one is research.</p>
+        <p>Four systems. Two are live products, one is my startup, one is open source and one is research.</p>
       </ViewHeader>
 
       <div className="work-page__grid">

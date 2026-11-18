@@ -68,29 +68,30 @@ export const projects = [
     ],
   },
 
-  {
-    id: 'sireio',
-    name: 'Sireio',
-    kind: 'Wellbeing app for expectant and new fathers',
-    short: 'Co-founder and CTO',
-    meta: [
-      { label: 'Where', value: 'Sireio, UK market' },
-      { label: 'My role', value: 'Co-founder and CTO' },
-      { label: 'Status', value: 'Building the MVP' },
-    ],
-    problem:
-      'Fathers get very little support of their own around pregnancy and birth. Sireio is preventative support for the father, built on research before code.',
-    built: [
-      "A theoretical framework that combines just-in-time adaptive interventions, Bandura's self-efficacy theory and attachment theory",
-      'Five dimensions mapped to validated clinical instruments: Emotional Awareness, Partner Attunement, Practical Readiness, Identity Transition and Support Network Clarity',
-      'A safety gate that screens what users write and fails closed if anything goes wrong',
-      'An append-only audit trail, and deletion designed for GDPR from day one',
-      'One shared safety prompt under every model call, versioned in code',
-      'A human in the loop for decisions that affect a user',
-    ],
-    idea: 'If the safety check breaks, nothing gets through.',
-    stack: ['Python', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'React', 'Vite', 'Claude API'],
-  },
+  // Sireio: commented out for now, will open it up in the future.
+  // {
+  //   id: 'sireio',
+  //   name: 'Sireio',
+  //   kind: 'Wellbeing app for expectant and new fathers',
+  //   short: 'Co-founder and CTO',
+  //   meta: [
+  //     { label: 'Where', value: 'Sireio, UK market' },
+  //     { label: 'My role', value: 'Co-founder and CTO' },
+  //     { label: 'Status', value: 'Building the MVP' },
+  //   ],
+  //   problem:
+  //     'Fathers get very little support of their own around pregnancy and birth. Sireio is preventative support for the father, built on research before code.',
+  //   built: [
+  //     "A theoretical framework that combines just-in-time adaptive interventions, Bandura's self-efficacy theory and attachment theory",
+  //     'Five dimensions mapped to validated clinical instruments: Emotional Awareness, Partner Attunement, Practical Readiness, Identity Transition and Support Network Clarity',
+  //     'A safety gate that screens what users write and fails closed if anything goes wrong',
+  //     'An append-only audit trail, and deletion designed for GDPR from day one',
+  //     'One shared safety prompt under every model call, versioned in code',
+  //     'A human in the loop for decisions that affect a user',
+  //   ],
+  //   idea: 'If the safety check breaks, nothing gets through.',
+  //   stack: ['Python', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'React', 'Vite', 'Claude API'],
+  // },
 
   {
     id: 'querio',

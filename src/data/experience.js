@@ -34,21 +34,22 @@ export const jobs = [
     ],
     projectId: 'hire-a-mind',
   },
-  {
-    id: 'sireio',
-    period: '',
-    current: true,
-    org: 'Sireio',
-    title: 'Co-founder and CTO',
-    summary: 'I lead technology for a wellbeing app for expectant and new fathers in the UK.',
-    highlights: [
-      'Built the research foundation the product stands on',
-      'Designed a fail-closed safety architecture with an append-only audit trail',
-      'Wrote the product spec: requirements, user stories and API contracts',
-      'Chose a lean MVP stack on FastAPI, PostgreSQL and React',
-    ],
-    projectId: 'sireio',
-  },
+  // Sireio: commented out for now, will open it up in the future.
+  // {
+  //   id: 'sireio',
+  //   period: '',
+  //   current: true,
+  //   org: 'Sireio',
+  //   title: 'Co-founder and CTO',
+  //   summary: 'I lead technology for a wellbeing app for expectant and new fathers in the UK.',
+  //   highlights: [
+  //     'Built the research foundation the product stands on',
+  //     'Designed a fail-closed safety architecture with an append-only audit trail',
+  //     'Wrote the product spec: requirements, user stories and API contracts',
+  //     'Chose a lean MVP stack on FastAPI, PostgreSQL and React',
+  //   ],
+  //   projectId: 'sireio',
+  // },
   {
     id: 'echologyx',
     period: '',
