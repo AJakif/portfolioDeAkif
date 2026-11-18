@@ -23,8 +23,20 @@ export const topics = [
   { label: 'Research', subject: 'Research collaboration' },
   { label: 'A talk', subject: 'Speaking invitation' },
   { label: 'One of my projects', subject: 'About one of your projects' },
+  { label: 'Photo or sketch collab', subject: 'Photography or sketch collaboration' },
   { label: 'Just hello', subject: 'Hello' },
 ];
 
 /** Words that scroll across the tape at the bottom of the Contact page. */
-export const contactTape = ['Roles', 'Research', 'Talks', 'Collaboration', 'Hard evaluation problems'];
+export const contactTape = [
+  'AI roles',
+  'Full stack builds',
+  'Photo walks',
+  'Research',
+  'Sketch collabs',
+  'Talks',
+  'Street and landscape shoots',
+  'Hard evaluation problems',
+  'Robotics chat',
+  'Anime recommendations',
+];

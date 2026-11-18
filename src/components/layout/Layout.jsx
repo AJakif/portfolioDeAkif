@@ -4,11 +4,14 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import ViewWipe from './ViewWipe.jsx';
+import NetworkCanvas from '../home/NetworkCanvas.jsx';
 
 /**
  * Layout — the frame around every page.
  *
  * It renders the header, the current page, and the footer.
+ * Every page except Home also gets a calm animated background
+ * (Home has its own, bolder one inside the hero).
  * <Outlet /> is where React Router puts the page for the current URL
  * (see the route table in src/App.jsx).
  */
@@ -28,6 +31,7 @@ export default function Layout() {
   return (
     <>
       <ViewWipe section={section} />
+      {section !== 'home' && <NetworkCanvas variant="ambient" />}
       <Header />
       <main>
         <Outlet />

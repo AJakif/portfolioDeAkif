@@ -40,6 +40,21 @@
   overflow-wrap: anywhere; /* a long address wraps instead of overflowing */
 }
 
+.channel-list__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.channel-list__arrow {
+  color: var(--muted);
+  font-size: 1.3rem;
+}
+
+.channel-list__row--link:hover .channel-list__arrow {
+  color: var(--apricot);
+}
+
 .channel-list__actions {
   display: flex;
   flex-wrap: wrap;

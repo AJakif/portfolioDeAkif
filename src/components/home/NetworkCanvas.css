@@ -1,9 +1,27 @@
-/* NetworkCanvas — fills the hero, behind everything else in it. */
+/* NetworkCanvas — the animated dots-and-lines background. */
 
-.network-canvas {
+/* Hero: fills the hero, behind everything else in it. */
+.network-canvas--hero {
   position: absolute;
   inset: 0; /* stretch to all four edges of the hero */
   width: 100%;
   height: 100%;
   z-index: -2;
+}
+
+/* Ambient: pinned to the screen behind every other page.
+   z-index -1 puts it above the body's background but below all content,
+   so cards (which have solid backgrounds) cover it and it only shows
+   in the gaps between them. */
+.network-canvas--ambient {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none; /* never block clicks */
+  /* Strongest around the page title, fading toward the bottom
+     where the reading happens. */
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.8) 45%, rgba(0, 0, 0, 0.5) 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0, 0, 0, 0.8) 45%, rgba(0, 0, 0, 0.5) 100%);
 }

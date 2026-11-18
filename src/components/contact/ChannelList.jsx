@@ -1,4 +1,5 @@
 import { profile } from '../../data/profile.js';
+import BrandIcon from '../ui/BrandIcon.jsx';
 import Button from '../ui/Button.jsx';
 import CopyEmailButton from '../ui/CopyEmailButton.jsx';
 import './ChannelList.css';
@@ -17,9 +18,15 @@ export default function ChannelList({ subject }) {
   // encodeURIComponent makes spaces and symbols safe inside a URL.
   const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}`;
 
+  // mailto: needs a mail app. Many people only use Gmail in the browser,
+  // so we also offer Gmail's compose window with the same fields filled in.
+  const gmail =
+    'https://mail.google.com/mail/?view=cm&fs=1' +
+    `&to=${encodeURIComponent(profile.email)}&su=${encodeURIComponent(subject)}`;
+
   return (
     <ul className="channel-list">
-      {/* Email row: address plus two actions. */}
+      {/* Email row: address plus three actions. */}
       <li className="channel-list__item">
         <div className="channel-list__row">
           <div>
@@ -31,11 +38,14 @@ export default function ChannelList({ subject }) {
             <Button href={mailto} size="sm">
               Write the email
             </Button>
+            <Button href={gmail} size="sm" variant="ghost">
+              Open in Gmail
+            </Button>
           </div>
         </div>
       </li>
 
-      {/* One row per social link. The whole row is clickable. */}
+      {/* One row per social link: logo and name. The whole row is clickable. */}
       {profile.links.map((link) => (
         <li key={link.url} className="channel-list__item">
           <a
@@ -43,11 +53,15 @@ export default function ChannelList({ subject }) {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${link.label}: ${link.display} (opens in a new tab)`}
           >
-            <div>
-              <small className="channel-list__label">{link.label}</small>
-              <span className="channel-list__value">{link.display}</span>
-            </div>
+            <span className="channel-list__brand">
+              <BrandIcon name={link.icon} />
+              <span className="channel-list__value">{link.label}</span>
+            </span>
+            <span className="channel-list__arrow" aria-hidden="true">
+              ↗
+            </span>
           </a>
         </li>
       ))}

@@ -22,3 +22,26 @@
   background: var(--apricot);
   transform: rotate(45deg);
 }
+
+/* The "Read more" / "Show less" link, shown only when `limit` is set.
+   Styled as inline text, lined up with the bullet text above it. */
+.tick-list__toggle {
+  padding: 0 0 0 26px;
+  border: 0;
+  background: none;
+  color: var(--peri);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.tick-list__toggle:hover {
+  color: var(--apricot);
+}
+
+.tick-list__toggle:focus-visible {
+  outline: 2px solid var(--peri);
+  outline-offset: 2px;
+}

@@ -7,21 +7,22 @@
  * The first paragraph is shown larger than the rest.
  */
 export const story = [
-  'I care less about whether a model can produce an answer and more about whether anyone can trust it.',
-  "That's why I keep ending up in the same place on every project: evaluation, audit trails, safety gates, evidence you can click through. I gave a talk on it too, Building Scalable AI Evaluation Systems, at AI Adda for Senior Tech Professionals.",
-  "I studied data science at AIUB in Dhaka and spent a lot of it outside the classroom. I went to Utah with the university's Mars rover team, ran a LEO Club region and coordinated events for the photography club.",
-  "At Echologyx I built the AI behind ELX Chatbot, which grew from a demo into a product that stores install. At Inument I own the AI behind Hire-a-Mind. Alongside that I co-founded Sireio, where I'm CTO.",
-  'I would rather be challenged than agreed with. Before I build, I write the spec, lock the big decisions and keep a log of why. Anime shaped my eye for design, this site included, and I do most of my coding at night.',
+  "I'm a full stack engineer who ended up building AI, and I think that order matters.",
+  'I started on the load-bearing parts of software. At Spectrum Engineering Consortium I built Angular and .NET Core apps with secure sign-in and SSO, and learned how much a slow query costs when I took a dashboard from over five minutes to under thirty seconds.',
+  "At Echologyx I led ELX Chatbot from a demo to an AI sales assistant that stores install on Shopify, WooCommerce and BigCommerce. That meant RAG and model failover, but also caching, scrapers, client demos and an API that stays up when a provider goes down.",
+  "Now at Inument I build the AI and the infrastructure behind Hire-a-Mind: LangGraph agents that score interviews, speech recognition, an MCP server, model routing and the AWS underneath, all in Terraform. Across all of it I care about one question: can anyone trust the answer? I gave a talk on that, Building Scalable AI Evaluation Systems, at AI Adda for Senior Tech Professionals.",
+  "I studied computer science with a data science major at AIUB in Dhaka, taught algorithms and AI as a TA, and went to Utah as mechanical team lead and rover operator for the AIUB Robotic Crew's Mars rover. Before I build, I write the spec and keep a log of why. Off screen I shoot street and landscape photography and sketch in pencil. Anime shaped my eye for design, this site included, and I do most of my coding at night.",
 ];
 
 /** Rows on the profile card. Add or remove rows freely. */
 export const profileRows = [
   { label: 'Base', value: 'Dhaka, Bangladesh' },
-  { label: 'Day job', value: 'Inument Solution Limited' },
-  { label: 'Startup', value: 'Sireio, co-founder and CTO' },
-  { label: 'Experience', value: '4 years, hands-on' },
-  { label: 'Specialities', value: 'Agent orchestration, retrieval, evaluation, speech' },
-  { label: 'Studied', value: 'Data science, AIUB' },
+  { label: 'Day job', value: 'AI Engineer, Inument Solution Limited' },
+  { label: 'Experience', value: '5+ years, full stack to generative AI' },
+  { label: 'AI', value: 'Multi-agent systems, RAG, MCP, speech, evaluation' },
+  { label: 'Software', value: 'Python, React, Angular, .NET Core, FastAPI, SQL, AWS' },
+  { label: 'Studied', value: 'BSc CSE (data science major), AIUB' },
+  { label: 'Off screen', value: 'Street and landscape photography, pencil sketching' },
   { label: 'Speaks', value: 'Bengali, English, some Hindi' },
   { label: 'Active hours', value: 'Night' },
 ];
@@ -47,7 +48,7 @@ export const achievements = [
   {
     badge: '18',
     title: 'University Rover Challenge finals, Utah, 2019',
-    text: '18th in the world and 4th in Asia with the AIUB Robotic Crew.',
+    text: '18th in the world and 4th in Asia with the AIUB Robotic Crew, among 36 finalists from 10 countries.',
   },
   {
     badge: 'GW',
@@ -62,7 +63,7 @@ export const achievements = [
   {
     badge: '10×',
     title: 'Demo to product',
-    text: 'ELX Chatbot went from a demo to a SaaS product on the Shopify App Store.',
+    text: 'ELX Chatbot went from a demo to a SaaS product on Shopify, WooCommerce and BigCommerce, answering 10 times faster.',
   },
   {
     badge: '70',
@@ -76,17 +77,34 @@ export const achievements = [
   },
 ];
 
-/** "More of me" short notes. */
+/**
+ * "More of me" short notes.
+ *   kana : small katakana tag shown on the card (decorative)
+ *   The first item is shown as a wide card.
+ */
 export const more = [
   {
+    kana: 'フォト',
+    title: 'Photography',
+    text: 'Street, landscape and lifestyle. I was the official photographer of many major events in university and conferences, and I post my work on Instagram as @akfigram.',
+  },
+  {
+    kana: 'スケッチ',
+    title: 'Pencil sketching',
+    text: 'Just pencil and paper. Sketching trained the same eye for line and composition that shapes my photos and this site.',
+  },
+  {
+    kana: 'リーダー',
     title: 'Also led',
     text: 'A patrol in Bangladesh Scouts, and served as Cadet Sergeant in the Bangladesh National Cadet Corps.',
   },
   {
+    kana: 'ライティング',
     title: 'Writing',
     text: 'I write on LinkedIn about AI engineering, careers and what breaks in production.',
   },
   {
+    kana: 'ツール',
     title: 'How I use AI myself',
     text: 'I build my own AI skills for thinking: one interviews me one question at a time, another turns the conversation into a requirements doc.',
   },

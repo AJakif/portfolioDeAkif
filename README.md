@@ -40,7 +40,7 @@ section is the step-by-step checklist.
 | Name, email, LinkedIn/GitHub links | `src/data/profile.js` |
 | Hero text, typed roles, hero buttons | `src/data/profile.js` → `hero` |
 | The four headline numbers on Home | `src/data/profile.js` → `facts` |
-| "What I'm on right now" cards | `src/data/profile.js` → `now` |
+| "Selected work" cards on Home | `src/data/profile.js` → `now` |
 | Words on the scrolling tape | `src/data/profile.js` → `homeTape`, `src/data/contact.js` → `contactTape` |
 | Add / edit / remove a project | `src/data/projects.js` |
 | Jobs and their dates, talks, volunteering | `src/data/experience.js` (dates go in `period`) |

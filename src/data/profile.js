@@ -10,14 +10,23 @@ export const profile = {
   shortName: 'Akif', // shown in the top-left corner
   kana: 'アキフ', // "Akif" in katakana (decorative lettering)
   kanaInitial: 'ア', // first katakana character, used as the avatar
-  title: 'GenAI full stack engineer',
+  title: 'Generative AI & Full Stack Engineer',
   location: 'Dhaka, Bangladesh',
   email: 'akifahmedjahin@gmail.com',
 
-  /** Social links. Used on the Contact page. */
+  /**
+   * Social links. Used on the Contact page.
+   *   icon : a logo name from src/components/ui/BrandIcon.jsx
+   */
   links: [
-    { label: 'LinkedIn', display: 'linkedin.com/in/ajakif', url: 'https://www.linkedin.com/in/ajakif' },
-    { label: 'GitHub', display: 'github.com/AJakif', url: 'https://github.com/AJakif' },
+    { label: 'LinkedIn', icon: 'linkedin', display: 'linkedin.com/in/ajakif', url: 'https://www.linkedin.com/in/ajakif' },
+    { label: 'GitHub', icon: 'github', display: 'github.com/AJakif', url: 'https://github.com/AJakif' },
+    {
+      label: 'Instagram',
+      icon: 'instagram',
+      display: 'instagram.com/akfigram, my photography',
+      url: 'https://www.instagram.com/akfigram/',
+    },
   ],
 };
 
@@ -43,7 +52,7 @@ export const kanaInitialGloss = {
   word: 'ア',
   say: 'a',
   soundsLike: 'ah',
-  meaning: 'The first character of アキフ, my name in Japanese katakana.',
+  meaning: 'The first character of アキフ (a-ki-fu) , my name in Japanese katakana.',
   label: 'The first letter of Akif in Japanese',
 };
 
@@ -54,14 +63,15 @@ export const hero = {
   // The typing animation cycles through these, in order.
   // The first one is what people see before the animation starts.
   roles: [
-    'GenAI Full Stack Engineer',
+    'Generative AI & Full Stack Engineer',
     'AI Engineer at Inument',
-    'Co-founder and CTO of Sireio',
-    'Speaker on AI evaluation',
+    'Builder of multi agent systems',
+    'Builder of compliance ready AI products',
+    'Photographer and sketch artist',
   ],
 
   intro:
-    'I design and ship AI products end to end: multi-agent systems, RAG pipelines, speech and the evaluation behind them. Four years in, from first prototype to production.',
+    'I build software end to end, and lately that software thinks. Five years in, I have shipped enterprise web apps, an AI shopping assistant that went live in online stores, and now hiring intelligence built to meet compliance rules for AI in hiring. Database to UI, prompt to production.',
 
   // Buttons under the intro. `variant: 'hot'` makes the filled apricot button.
   actions: [
@@ -73,43 +83,52 @@ export const hero = {
 
 /** Words that scroll across the apricot tape on the Home page. */
 export const homeTape = [
-  'Multi-agent orchestration',
-  'Retrieval',
-  'Evaluation',
-  'Speech',
-  'LangGraph',
-  'Pydantic AI',
+  'Multi agent systems',
+  'Compliance ready AI products',
+  'Street photographer',
+  'React and .NET',
+  'Pencil sketch artist',
+  'RAG pipelines',
+  'Mars rover crew',
+  'AWS and Terraform',
   'FastAPI',
-  'pgvector',
-  'On-device models',
-  'Safety gates',
-];
-
-/** The four headline numbers under the tape. */
-export const facts = [
-  { value: '4 yrs', label: 'building generative AI and full stack products' },
-  { value: '10×', label: 'faster ELX Chatbot after caching and database tuning' },
-  { value: '18th', label: 'in the world at the University Rover Challenge, 2019' },
-  { value: '~70', label: 'people from 20+ companies at my talk on AI evaluation' },
+  'Night shift coder',
+  'MCP servers',
+  'Lifestyle shots',
+  'Anime inspired design',
+  'PostgreSQL',
+  'Guinness World Record cyclist',
+  'AI research',
 ];
 
 /**
- * "What I'm on right now" cards.
+ * The four headline numbers under the tape. Keep `value` short: it is set
+ * very large. These describe me, not one project's or one team's results.
+ */
+export const facts = [
+  { value: '5+ yrs', label: 'building software, from web apps to multi agent AI' },
+  { value: '50+', label: 'students I mentored as a teaching assistant in algorithms and AI' },
+  { value: '~70', label: 'engineers from 20+ companies at my talk on AI evaluation' },
+  { value: '3', label: 'production grade AI SaaS products I have worked on' },
+]
+
+/**
+ * "Selected work" cards on the Home page.
  * `projectId` must match an `id` in src/data/projects.js;
  * clicking the card opens that project on the Work page.
  */
 export const now = [
   {
     projectId: 'hire-a-mind',
-    tag: 'Inument',
+    tag: 'Inument, now',
     title: 'Hire-a-Mind',
-    text: 'AI engineer and technical owner of an interview intelligence platform.',
+    text: 'Compliance ready hiring intelligence from job description to offer. I build the AI and infrastructure behind it, including the voice AI interviewer.',
   },
   {
     projectId: 'elx',
-    tag: 'Echologyx',
+    tag: 'Echologyx, 2023 – 2025',
     title: 'ELX Chatbot',
-    text: 'AI shopping assistant that grew from a demo into a live Shopify app.',
+    text: 'AI sales assistant I led from demo to a live app on Shopify, WooCommerce and BigCommerce.',
   },
   // Sireio: commented out for now, will open it up in the future.
   // {

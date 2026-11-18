@@ -18,6 +18,9 @@ import './ExperiencePanel.css';
  *
  * Content: src/data/experience.js
  */
+/** How many bullets each job shows before its "Read more" button. */
+const HIGHLIGHTS_SHOWN = 1;
+
 export default function ExperiencePanel() {
   // Turn each job from the data file into the shape <Timeline> expects.
   const timelineItems = jobs.map((job) => {
@@ -35,7 +38,7 @@ export default function ExperiencePanel() {
       text: job.summary,
       content: (job.highlights || project) && (
         <>
-          {job.highlights && <TickList items={job.highlights} />}
+          {job.highlights && <TickList items={job.highlights} limit={HIGHLIGHTS_SHOWN} />}
           {project && <Button to={`/work/${project.id}`}>Open the {project.name} project</Button>}
         </>
       ),
