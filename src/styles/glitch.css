@@ -83,11 +83,102 @@
   95% { transform: translateX(calc(-1 * var(--glitch-amp))); }
 }
 
+/**
+ * .glitch-kana — a different glitch, for the katakana name.
+ *
+ * Usage is the same: class="glitch-kana" + data-text="<same text>".
+ *
+ * Where .glitch tears the text into HORIZONTAL stripes that slide sideways,
+ * this one feels like a weak signal:
+ *   - the real text flickers on and off (signal dropout)
+ *   - ::before cuts the text into VERTICAL columns that jump up and down
+ *   - ::after leaves a blurred, diagonal "ghost" echo behind
+ * The burst sits at the START of each cycle (first ~14%), so a one-shot
+ * run (see ViewWipe.css) glitches in right away, then settles.
+ *
+ * Knobs (set on the element):
+ *   --kana-amp : jump size. 1px for small text, bigger for huge text.
+ *   --kana-a   : color of the column-tear copy. Default periwinkle.
+ *   --kana-b   : color of the ghost echo. Default main text color.
+ *   animation-duration / -delay / -iteration-count: apply to the element
+ *   AND its ::before/::after.
+ */
+
+.glitch-kana {
+  --kana-amp: 1px;
+  --kana-a: var(--peri);
+  --kana-b: var(--text);
+  position: relative;
+  display: inline-block;
+  animation: kana-flicker 5.5s infinite steps(1);
+}
+
+.glitch-kana::before,
+.glitch-kana::after {
+  content: attr(data-text);
+  content: attr(data-text) / '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  animation: inherit;
+}
+
+.glitch-kana::before {
+  color: var(--kana-a);
+  animation-name: kana-tear;
+}
+
+.glitch-kana::after {
+  color: var(--kana-b);
+  animation-name: kana-ghost;
+}
+
+.glitch-kana:hover,
+.glitch-kana:hover::before,
+.glitch-kana:hover::after {
+  animation-duration: 1.4s;
+}
+
+/* Signal dropout: the real text blinks out a few times. */
+@keyframes kana-flicker {
+  0%   { opacity: 1; }
+  2%   { opacity: 0.15; }
+  4%   { opacity: 1; }
+  7%   { opacity: 0.45; }
+  9%   { opacity: 1; }
+  11%  { opacity: 0; }
+  12%, 100% { opacity: 1; }
+}
+
+/* Vertical columns of the text jump up and down. */
+@keyframes kana-tear {
+  0%   { opacity: 1; clip-path: inset(0 62% 0 0);  transform: translateY(calc(-5 * var(--kana-amp))); }
+  2%   { opacity: 1; clip-path: inset(0 20% 0 45%); transform: translateY(calc(6 * var(--kana-amp))); }
+  4%   { opacity: 1; clip-path: inset(0 0 0 70%);   transform: translate(calc(2 * var(--kana-amp)), calc(-7 * var(--kana-amp))); }
+  7%   { opacity: 1; clip-path: inset(0 48% 0 18%); transform: translateY(calc(4 * var(--kana-amp))) scaleY(1.15); }
+  10%  { opacity: 1; clip-path: inset(0 8% 0 80%);  transform: translateY(calc(-3 * var(--kana-amp))); }
+  13%, 100% { opacity: 0; clip-path: inset(0 100% 0 0); transform: none; }
+}
+
+/* A soft, blurred echo that lags diagonally behind. */
+@keyframes kana-ghost {
+  0%   { opacity: 0; }
+  1%   { opacity: 0.55; filter: blur(1px); transform: translate(calc(-6 * var(--kana-amp)), calc(4 * var(--kana-amp))); }
+  5%   { opacity: 0.35; filter: blur(2px); transform: translate(calc(7 * var(--kana-amp)), calc(-3 * var(--kana-amp))); }
+  8%   { opacity: 0.6;  filter: blur(0.5px); transform: translate(calc(-3 * var(--kana-amp)), calc(-5 * var(--kana-amp))); }
+  12%  { opacity: 0.25; filter: blur(2px); transform: translate(calc(4 * var(--kana-amp)), calc(2 * var(--kana-amp))); }
+  14%, 100% { opacity: 0; filter: none; transform: none; }
+}
+
 /* People who've asked their OS for less motion get plain text. */
 @media (prefers-reduced-motion: reduce) {
   .glitch,
   .glitch::before,
-  .glitch::after {
+  .glitch::after,
+  .glitch-kana,
+  .glitch-kana::before,
+  .glitch-kana::after {
     animation: none;
   }
 }

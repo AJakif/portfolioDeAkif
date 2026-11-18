@@ -47,6 +47,14 @@
   color: var(--apricot);
 }
 
+/* The katakana runs on its own slower 5.5s cycle, offset from the name
+   (3.5s) so the two glitches rarely land together. */
+.header__brand-kana,
+.header__brand-kana::before,
+.header__brand-kana::after {
+  animation-delay: -3s;
+}
+
 /* Phones: hide the copy button; the menu moves to the bottom (see Dock.css). */
 @media (max-width: 640px) {
   .header__copy {

@@ -3,7 +3,6 @@ import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
-import ViewWipe from './ViewWipe.jsx';
 import NetworkCanvas from '../home/NetworkCanvas.jsx';
 
 /**
@@ -21,6 +20,10 @@ export default function Layout() {
   // The first part of the URL: "/work/querio" -> "work", "/" -> "home".
   const section = pathname.split('/')[1] || 'home';
 
+  // Note: inside <Routes location={displayLocation}> (App.jsx), this is the
+  // location being SHOWN, so during a wipe it updates only once the panel
+  // covers the screen, and the scroll jump below happens out of sight.
+
   // Jump back to the top when the visitor moves to a different section.
   // Switching tabs inside Background keeps the scroll position, because
   // the section ("background") stays the same.
@@ -30,7 +33,6 @@ export default function Layout() {
 
   return (
     <>
-      <ViewWipe section={section} />
       {section !== 'home' && <NetworkCanvas variant="ambient" />}
       <Header />
       <main>

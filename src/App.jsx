@@ -9,6 +9,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Layout from './components/layout/Layout.jsx';
+import ViewWipe from './components/layout/ViewWipe.jsx';
+import usePageWipe from './hooks/usePageWipe.js';
 
 import HomePage from './pages/HomePage.jsx';
 import WorkPage from './pages/WorkPage.jsx';
@@ -20,30 +22,37 @@ import AboutPage from './pages/AboutPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
 
 export default function App() {
+  // During a page change, the old page stays on screen until the wipe
+  // panel covers it; only then does displayLocation move to the new URL.
+  const { displayLocation, wipeCount } = usePageWipe();
+
   return (
-    <Routes>
-      {/* Layout draws the header and footer around every page. */}
-      <Route element={<Layout />}>
-        <Route index element={<HomePage />} />
+    <>
+      <ViewWipe wipeCount={wipeCount} />
+      <Routes location={displayLocation}>
+        {/* Layout draws the header and footer around every page. */}
+        <Route element={<Layout />}>
+          <Route index element={<HomePage />} />
 
-        {/* /work shows the first project, /work/querio shows a specific one. */}
-        <Route path="work" element={<WorkPage />} />
-        <Route path="work/:projectId" element={<WorkPage />} />
+          {/* /work shows the first project, /work/querio shows a specific one. */}
+          <Route path="work" element={<WorkPage />} />
+          <Route path="work/:projectId" element={<WorkPage />} />
 
-        {/* Background has three sub-pages that share one header. */}
-        <Route path="background" element={<BackgroundPage />}>
-          <Route index element={<Navigate to="experience" replace />} />
-          <Route path="experience" element={<ExperiencePanel />} />
-          <Route path="skills" element={<SkillsPanel />} />
-          <Route path="education" element={<EducationPanel />} />
+          {/* Background has three sub-pages that share one header. */}
+          <Route path="background" element={<BackgroundPage />}>
+            <Route index element={<Navigate to="experience" replace />} />
+            <Route path="experience" element={<ExperiencePanel />} />
+            <Route path="skills" element={<SkillsPanel />} />
+            <Route path="education" element={<EducationPanel />} />
+          </Route>
+
+          <Route path="about" element={<AboutPage />} />
+          <Route path="contact" element={<ContactPage />} />
+
+          {/* Any unknown URL goes back to the home page. */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
-
-        <Route path="about" element={<AboutPage />} />
-        <Route path="contact" element={<ContactPage />} />
-
-        {/* Any unknown URL goes back to the home page. */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }

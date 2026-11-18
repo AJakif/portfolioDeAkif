@@ -1,4 +1,12 @@
-/* ViewWipe — the diagonal swipe between pages, carrying the katakana name. */
+/* ViewWipe — the dark diagonal panel between pages, carrying the katakana name.
+ *
+ * Timeline (1.4s total). The 25% and 71% marks MUST match WIPE_COVER_MS
+ * and WIPE_LEAVE_MS in src/hooks/usePageWipe.js.
+ *   0%  – 25%  (0 – 0.35s)   panel slides in from the left, eases to a stop
+ *   25%        (0.35s)       screen covered: the new page swaps in underneath
+ *   25% – 71%  (0.35 – 1.0s) panel holds; name fades in, glitches once, settles
+ *   71% – 100% (1.0 – 1.4s)  name fades out, panel slides away to the right
+ */
 
 .view-wipe {
   position: fixed;
@@ -6,16 +14,33 @@
   z-index: 50; /* above everything */
   display: grid;
   place-items: center; /* centers the name; the panel's center is the screen's center */
-  background: var(--apricot);
+  /* A dark panel (the card color) instead of a bright one, so changing
+     pages never flashes the screen. The apricot edges only show while the
+     panel moves, as a streak of color on the way in and out. */
+  background: var(--panel);
+  border-inline: 6px solid var(--apricot);
   pointer-events: none; /* never blocks clicks */
+  will-change: transform;
+  animation: view-wipe 1.4s linear forwards;
+}
 
-  /* Covers the screen, holds for a moment so the name can be read,
-     then slides away to the right. Change 0.8s to make it faster or slower. */
-  animation: view-wipe-out 0.8s cubic-bezier(0.7, 0, 0.25, 1) forwards;
+@keyframes view-wipe {
+  0% {
+    transform: translateX(-115%) skewX(-14deg);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* fast in, soft landing */
+  }
+  25%,
+  71% {
+    transform: translateX(0) skewX(-14deg);
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1); /* gentle start, gentle end */
+  }
+  100% {
+    transform: translateX(115%) skewX(-14deg);
+  }
 }
 
 .view-wipe__name {
-  color: var(--on-apricot);
+  color: var(--apricot);
   font-family: var(--font-kana);
   font-size: clamp(4rem, 16vw, 11rem);
   line-height: 1;
@@ -23,15 +48,39 @@
   /* The panel is slanted -14deg. Slanting the text +14deg cancels that out,
      so the letters stand upright. */
   transform: skewX(14deg);
+  opacity: 0;
+  animation: view-wipe-name 1.4s linear forwards;
 }
 
-@keyframes view-wipe-out {
-  /* 0% to 35%: stay put (the "hold"). */
-  from,
-  35% {
-    transform: translateX(0) skewX(-14deg);
+/* Hidden while the panel moves; fully visible only while it's still. */
+@keyframes view-wipe-name {
+  0%,
+  25% {
+    opacity: 0;
   }
-  to {
-    transform: translateX(115%) skewX(-14deg);
+  32%,
+  68% {
+    opacity: 1;
   }
+  74%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* The katakana glitch (src/styles/glitch.css) plays ONCE here, starting
+   as the name appears. Its burst is the first ~14% of 1.6s (about 0.22s),
+   so it settles by ~0.6s and the name holds still until the panel leaves. */
+.view-wipe .glitch-kana {
+  --kana-amp: 3px; /* bigger jumps for huge text */
+  --kana-a: var(--peri); /* column-tear copy */
+  --kana-b: var(--text); /* blurred ghost echo */
+}
+
+.view-wipe .glitch-kana,
+.view-wipe .glitch-kana::before,
+.view-wipe .glitch-kana::after {
+  animation-duration: 1.6s;
+  animation-delay: 0.38s;
+  animation-iteration-count: 1;
 }
