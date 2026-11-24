@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { backgroundNav } from '../data/navigation.js';
 import SegmentedNav from '../components/background/SegmentedNav.jsx';
 import ViewHeader from '../components/ui/ViewHeader.jsx';
+import './BackgroundPage.css';
 
 /**
  * BackgroundPage — URL: /background/...
@@ -23,8 +24,8 @@ import ViewHeader from '../components/ui/ViewHeader.jsx';
  */
 export default function BackgroundPage() {
   return (
-    <div className="wrap">
-      <ViewHeader title="Background">
+    <div className="wrap background-page">
+      <ViewHeader title="Experience">
         <SegmentedNav items={backgroundNav} />
       </ViewHeader>
 

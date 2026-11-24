@@ -1,71 +1,54 @@
-import { jobs, leadership, talks } from '../../data/experience.js';
+import { Link } from 'react-router-dom';
+import { jobs, leadership, memberships, talks } from '../../data/experience.js';
 import { getProjectById } from '../../data/projects.js';
 import LeadershipList from '../../components/background/LeadershipList.jsx';
-import Button from '../../components/ui/Button.jsx';
 import SectionBlock from '../../components/ui/SectionBlock.jsx';
-import TickList from '../../components/ui/TickList.jsx';
-import Tile from '../../components/ui/Tile.jsx';
-import Timeline from '../../components/ui/Timeline.jsx';
+import Timeline, { TimelineDetails } from '../../components/ui/Timeline.jsx';
 import './ExperiencePanel.css';
 
-/**
- * ExperiencePanel — URL: /background/experience
- *
- * Top to bottom:
- *   Timeline       : every job, newest first, with its dates
- *   Talks          : presentations given
- *   LeadershipList : leadership and volunteering
- *
- * Content: src/data/experience.js
- */
-/** How many bullets each job shows before its "Read more" button. */
-const HIGHLIGHTS_SHOWN = 1;
-
 export default function ExperiencePanel() {
-  // Turn each job from the data file into the shape <Timeline> expects.
   const timelineItems = jobs.map((job) => {
-    // `project` is undefined when the job has no projectId.
     const project = job.projectId ? getProjectById(job.projectId) : undefined;
+    const hasHighlights = Boolean(job.highlights?.length);
 
     return {
       id: job.id,
-      // Show the real dates when we have them; otherwise a simple label.
       when: job.period || (job.current ? 'Now' : 'Earlier'),
       current: job.current,
-      title: job.org,
-      // "Software Engineer, Dhaka" when a location is given, else just the title.
-      subtitle: [job.title, job.location].filter(Boolean).join(', '),
+      title: job.title,
+      subtitle: [job.org, job.location].filter(Boolean).join(' · '),
       text: job.summary,
-      content: (job.highlights || project) && (
-        <>
-          {job.highlights && <TickList items={job.highlights} limit={HIGHLIGHTS_SHOWN} />}
-          {project && <Button to={`/work/${project.id}`}>Open the {project.name} project</Button>}
-        </>
+      content: (hasHighlights || project) && (
+        <div className="timeline__actions">
+          {hasHighlights && <TimelineDetails id={job.id} items={job.highlights} />}
+          {project && <Link className="timeline__link" to={`/work/${project.id}`}>{project.name}</Link>}
+        </div>
       ),
     };
   });
 
   return (
     <>
-      <div className="experience-panel__timeline">
-        <Timeline items={timelineItems} />
-      </div>
+      <Timeline label="Work history" items={timelineItems} />
 
-      <SectionBlock title="Talks">
+      <SectionBlock title="Speaking and community">
         <div className="experience-panel__talks">
           {talks.map((talk) => (
-            <Tile key={talk.id} title={talk.title}>
-              <p>
-                {/* Put the date first when we have one: "Oct 2026, AI Adda ..." */}
-                {[talk.when, talk.event].filter(Boolean).join(', ')}. {talk.text}
-              </p>
-            </Tile>
+            <article key={talk.id} className="experience-panel__talk" aria-labelledby={`talk-${talk.id}`}>
+              <div>
+                <p className="experience-panel__talk-label">Talk</p>
+                <h3 id={`talk-${talk.id}`}>{talk.title}</h3>
+                {talk.event && <p className="experience-panel__talk-event">{talk.event}</p>}
+              </div>
+              <div className="experience-panel__talk-facts">
+                {talk.when && <p>{talk.when}</p>}
+                {talk.text && <p>{talk.text}</p>}
+                {talk.host && <p>Hosted by {talk.host}</p>}
+              </div>
+            </article>
           ))}
         </div>
-      </SectionBlock>
-
-      <SectionBlock title="Leadership and volunteering">
-        <LeadershipList items={leadership} />
+        <LeadershipList items={leadership} memberships={memberships} />
       </SectionBlock>
     </>
   );

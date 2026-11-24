@@ -1,12 +1,57 @@
-/* ExperiencePanel — spacing around the work timeline and the talks. */
-
-.experience-panel__timeline {
-  margin-top: 36px;
-}
-
 .experience-panel__talks {
   display: grid;
-  /* As many columns as fit, each at least 320px wide. */
-  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
-  gap: 16px;
+  gap: var(--space-4);
+}
+
+.experience-panel__talk {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 12px clamp(16px, 3vw, 28px);
+  padding: clamp(16px, 3vw, 27px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+
+.experience-panel__talk-label {
+  color: var(--apricot);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.experience-panel__talk h3 {
+  margin-top: 4px;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.3;
+}
+
+.experience-panel__talk-event {
+  margin-top: 4px;
+  color: var(--peri);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.experience-panel__talk-facts {
+  padding-inline-start: clamp(16px, 3vw, 28px);
+  border-inline-start: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.experience-panel__talk-facts p + p {
+  margin-top: 3px;
+}
+
+@media (max-width: 590px) {
+  .experience-panel__talk {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .experience-panel__talk-facts {
+    padding: 10px 0 0;
+    border-inline-start: 0;
+    border-top: 1px solid var(--line);
+  }
 }
