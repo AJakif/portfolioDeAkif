@@ -11,14 +11,14 @@
 export const mainNav = [
   { label: 'Home', to: '/', end: true },
   { label: 'Work', to: '/work' },
-  { label: 'Background', to: '/background' },
+  { label: 'Experience', to: '/background' },
   { label: 'About', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ];
 
 /** The three tabs inside the Background page. */
 export const backgroundNav = [
-  { label: 'Experience', to: '/background/experience' },
+  { label: 'Work history', to: '/background/experience' },
   { label: 'Skills', to: '/background/skills' },
   { label: 'Education', to: '/background/education' },
 ];

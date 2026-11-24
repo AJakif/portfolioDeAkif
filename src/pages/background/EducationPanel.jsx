@@ -1,54 +1,65 @@
+import { Link } from 'react-router-dom';
 import { research, schools } from '../../data/education.js';
 import { getProjectById } from '../../data/projects.js';
-import Button from '../../components/ui/Button.jsx';
 import SectionBlock from '../../components/ui/SectionBlock.jsx';
-import TickList from '../../components/ui/TickList.jsx';
-import Tile from '../../components/ui/Tile.jsx';
-import Timeline from '../../components/ui/Timeline.jsx';
+import Timeline, { TimelineDetails } from '../../components/ui/Timeline.jsx';
 import './EducationPanel.css';
 
-/**
- * EducationPanel — URL: /background/education
- *
- * Top to bottom:
- *   Timeline : every school, newest first, with its years
- *   Research : small research cards
- *
- * Content: src/data/education.js
- */
 export default function EducationPanel() {
-  // Turn each school from the data file into the shape <Timeline> expects.
   const timelineItems = schools.map((school) => ({
     id: school.id,
-    when: school.period, // '' means "no dates yet"; Timeline then skips the line
+    when: school.period,
     current: school.current,
-    title: school.name,
-    subtitle: school.subject,
-    text: school.summary,
-    content: school.highlights && <TickList items={school.highlights} />,
+    featured: school.featured,
+    title: school.subject,
+    subtitle: school.name,
+    content: (
+      <>
+        {(school.field || school.grade) && (
+          <p className="education-panel__facts">
+            {school.field && <span>{school.field}</span>}{' '}
+            {school.grade && <span className="education-panel__grade">{school.grade}</span>}
+          </p>
+        )}
+        {school.summary && <p className="education-panel__note">{school.summary}</p>}
+        {school.highlights?.length > 0 && (
+          <div className="timeline__actions">
+            <TimelineDetails
+              id={school.id}
+              items={school.highlights}
+              label="University highlights"
+              hideLabel="Hide university highlights"
+            />
+          </div>
+        )}
+      </>
+    ),
   }));
 
   return (
     <>
-      <div className="education-panel__timeline">
-        <Timeline items={timelineItems} />
-      </div>
+      <Timeline label="Education history" items={timelineItems} />
 
       <SectionBlock title="Research">
-        <div className="education-panel__research">
+        <div className="timeline education-panel__research">
           {research.map((item) => {
-            // Some research cards link to a project; most don't.
             const project = item.projectId ? getProjectById(item.projectId) : undefined;
 
             return (
-              <Tile key={item.title} title={item.title}>
-                <p>{item.text}</p>
-                {project && (
-                  <Button to={`/work/${project.id}`} size="sm">
-                    Open the {project.name} project
-                  </Button>
-                )}
-              </Tile>
+              <article className="timeline__item" key={item.projectId ?? item.title}>
+                <div>
+                  <h3>{project?.name ?? item.title}</h3>
+                  {project && <p className="timeline__subtitle">{item.title}</p>}
+                </div>
+                <div>
+                  <p className="timeline__text">{item.text}</p>
+                  {project && (
+                    <div className="timeline__actions">
+                      <Link className="timeline__link" to={`/work/${project.id}`}>{project.name} overview</Link>
+                    </div>
+                  )}
+                </div>
+              </article>
             );
           })}
         </div>

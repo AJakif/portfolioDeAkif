@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import './SegmentedNav.css';
 
 /**
- * SegmentedNav — the small tab switch on the Background page
- * (Experience / Skills / Education).
+ * SegmentedNav — the small tab switch on the Experience page
+ * (Work history / Skills / Education).
  *
  * @param {{ label: string, to: string }[]} items
  *        From `backgroundNav` in src/data/navigation.js.
@@ -14,7 +14,7 @@ import './SegmentedNav.css';
  */
 export default function SegmentedNav({ items }) {
   return (
-    <nav className="segmented-nav" aria-label="Background sections">
+    <nav className="segmented-nav" aria-label="Experience sections">
       {items.map((item) => (
         <NavLink key={item.to} to={item.to} className="segmented-nav__link">
           {item.label}

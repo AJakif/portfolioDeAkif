@@ -1,18 +1,30 @@
-/* EducationPanel — spacing around the education timeline and research cards. */
+.education-panel__facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 16px;
+  font-weight: 800;
+}
 
-.education-panel__timeline {
-  margin-top: 36px;
+.education-panel__grade {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.education-panel__note {
+  max-width: 65ch;
+  margin-top: 5px;
+  color: var(--muted);
 }
 
 .education-panel__research {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  margin-top: 0;
+  border-top: 1px solid var(--line);
 }
 
-/* Tablets and phones: one card per row. */
-@media (max-width: 900px) {
-  .education-panel__research {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.education-panel__research h3 {
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  line-height: 1.3;
 }
