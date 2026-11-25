@@ -39,9 +39,9 @@ const VARIANTS = {
   hero: {
     linkDistance: 150,
     pointerDistance: 190,
-    speed: 0.28,
-    pulseEveryMs: 420,
-    pulseTravelMs: 900,
+    speed: 0.22,
+    pulseEveryMs: 550,
+    pulseTravelMs: 1100,
     areaPerNode: 17000,
     minNodes: 22,
     maxNodes: 64,

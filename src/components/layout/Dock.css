@@ -33,19 +33,31 @@
 }
 
 /* Phones: the menu floats at the bottom of the screen, like an app tab bar. */
-@media (max-width: 640px) {
+@media (max-width: 800px) {
   .dock {
     position: fixed;
     left: 50%;
-    bottom: 14px;
+    bottom: max(12px, env(safe-area-inset-bottom));
     transform: translateX(-50%);
     z-index: 40;
-    max-width: calc(100vw - 16px);
-    overflow-x: auto; /* very narrow screens can scroll the menu sideways */
+    width: max-content;
+    max-width: calc(100% - 16px);
+    gap: 2px;
   }
 
   .dock__link {
-    padding: 9px 11px;
+    padding: 11px clamp(6px, 2vw, 14px);
     font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .dock {
+    gap: 0;
+  }
+
+  .dock__link {
+    padding-inline: 6px;
+    font-size: 0.82rem;
   }
 }

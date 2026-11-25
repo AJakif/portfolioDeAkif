@@ -38,10 +38,10 @@ section is the step-by-step checklist.
 | I want to change | Edit this file |
 | --- | --- |
 | Name, email, LinkedIn/GitHub links | `src/data/profile.js` |
-| Hero text, typed roles, hero buttons | `src/data/profile.js` → `hero` |
+| Hero title, intro, and links | `src/data/profile.js` → `profile.title` and `hero` |
 | The four headline numbers on Home | `src/data/profile.js` → `facts` |
-| "Selected work" cards on Home | `src/data/profile.js` → `now` |
-| Words on the scrolling tape | `src/data/profile.js` → `homeTape`, `src/data/contact.js` → `contactTape` |
+| Project cards on Home and Work | `src/data/projects.js` → `name`, `short`, `homeLabel`, and `preview` |
+| Words on the scrolling strips | `src/data/profile.js` → `homeTape`, `src/data/contact.js` → `contactTape` |
 | Add / edit / remove a project | `src/data/projects.js` |
 | Jobs and their dates, talks, volunteering | `src/data/experience.js` (dates go in `period`) |
 | Skills | `src/data/skills.js` |
@@ -54,7 +54,6 @@ section is the step-by-step checklist.
 | Colors, fonts, corner radius | `src/styles/tokens.css` |
 | Which fonts are loaded | `index.html` (then update `tokens.css`) |
 | Browser tab title, search description | `index.html` |
-| Typing animation speed | `src/hooks/useTypedText.js` (constants at the top) |
 | Hero background animation | `src/components/home/NetworkCanvas.jsx` (constants at the top) |
 | Page-change swipe effect (speed, look) | `src/components/layout/ViewWipe.css` |
 | The Japanese name on the swipe | `src/data/profile.js` → `kana` |
@@ -86,7 +85,7 @@ src/
 
   hooks/                   Small reusable pieces of logic.
     useReducedMotion.js    Did the visitor ask for fewer animations?
-    useTypedText.js        Typewriter effect.
+    usePageWipe.js         Timing for the animation between sections.
     useClock.js            Live clock for a time zone.
     useCopyToClipboard.js  Copy text and show "Copied".
 
@@ -109,7 +108,7 @@ src/
       Timeline             Vertical rail with dates (experience, education).
       Tooltip              Glossary card for the Japanese lettering.
       Quote                Recommendation card.
-    home/                  Hero, TypedRole, NetworkCanvas, FactGrid, NowGrid
+    home/                  Hero, NetworkCanvas, FactGrid, NowGrid
     work/                  ProjectList, ProjectDetail, ProjectFlow
     background/            SegmentedNav, LeadershipList, SkillCard
     about/                 Story, ProfileCard, RulesGrid, AchievementList, MoreList
@@ -117,8 +116,8 @@ src/
 
   pages/                   One file per page. Pages only arrange components.
     HomePage.jsx           /
-    WorkPage.jsx           /work and /work/:projectId
-    BackgroundPage.jsx     /background (shell with the tab switch)
+    WorkPage.jsx           /work overview and /work/:projectId stories
+    BackgroundPage.jsx     /background (Experience page with the tab switch)
     background/
       ExperiencePanel.jsx  /background/experience
       SkillsPanel.jsx      /background/skills
@@ -154,7 +153,7 @@ So data flows one way: `data file → page → component`.
 ### Add a project
 Open `src/data/projects.js`, copy one of the objects, change the `id` to something
 unique, and fill in the fields. The list of fields is documented at the top of that file.
-It appears on the Work page automatically at `/work/<your-id>`.
+The project appears on Home and Work and has its own page at `/work/<your-id>`.
 
 ### Add a job
 Open `src/data/experience.js` and add an object to `jobs`. Put the newest first,

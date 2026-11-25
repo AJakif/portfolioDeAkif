@@ -72,7 +72,7 @@ export default function Tooltip({
       </button>
 
       <span className="tooltip__bubble" role="tooltip" id={id}>
-        <span className="tooltip__word">{word}</span>
+        <span className="tooltip__word" lang="ja">{word}</span>
         <span className="tooltip__say">
           {say} {soundsLike && <span>sounds like {soundsLike}</span>}
         </span>

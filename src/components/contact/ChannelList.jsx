@@ -7,22 +7,23 @@ import './ChannelList.css';
 /**
  * ChannelList — the ways to get in touch: email first, then each social link.
  *
- * @param {string} subject The email subject line to pre-fill. It comes from
- *                         the topic the visitor picked on the Contact page.
+ * @param {string} subject Optional email subject line to pre-fill.
+ * @param {node} children Optional controls shown below the email actions.
  *
  * The email address and the social links come from src/data/profile.js.
  * To add a channel (for example X or a blog), add it to `profile.links`.
  */
-export default function ChannelList({ subject }) {
+export default function ChannelList({ subject, children }) {
   // A mailto: link opens the visitor's mail app with the fields filled in.
   // encodeURIComponent makes spaces and symbols safe inside a URL.
-  const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}`;
+  const encodedSubject = subject ? encodeURIComponent(subject) : '';
+  const mailto = `mailto:${profile.email}` + (encodedSubject ? `?subject=${encodedSubject}` : '');
 
   // mailto: needs a mail app. Many people only use Gmail in the browser,
   // so we also offer Gmail's compose window with the same fields filled in.
   const gmail =
     'https://mail.google.com/mail/?view=cm&fs=1' +
-    `&to=${encodeURIComponent(profile.email)}&su=${encodeURIComponent(subject)}`;
+    `&to=${encodeURIComponent(profile.email)}` + (encodedSubject ? `&su=${encodedSubject}` : '');
 
   return (
     <ul className="channel-list">
@@ -34,15 +35,16 @@ export default function ChannelList({ subject }) {
             <span className="channel-list__value">{profile.email}</span>
           </div>
           <div className="channel-list__actions">
-            <CopyEmailButton variant="hot" size="sm" />
-            <Button href={mailto} size="sm">
-              Write the email
+            <Button href={mailto} variant="hot" size="sm">
+              Email me
             </Button>
+            <CopyEmailButton label="Copy address" variant="default" size="sm" />
             <Button href={gmail} size="sm" variant="ghost">
               Open in Gmail
             </Button>
           </div>
         </div>
+        {children}
       </li>
 
       {/* One row per social link: logo and name. The whole row is clickable. */}

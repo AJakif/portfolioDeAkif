@@ -11,16 +11,17 @@ import Button from './Button.jsx';
  * After a successful copy the label changes to "Copied" for a moment.
  * If the browser blocks clipboard access, we send the visitor to the
  * Contact page, where the address is written out and can be selected.
- * If they are already on the Contact page, the label says so instead.
+ * On Contact, it explains how to copy the displayed address.
  *
  * Props (all optional, passed on to Button):
  *   variant : 'ghost' (default) | 'hot' | 'default'
  *   size    : 'sm' (default) | 'md'
+ *   label   : text shown before a visitor copies the address
  */
 // How long the "couldn't copy" message stays, in milliseconds.
 const FAILED_MS = 3000;
 
-export default function CopyEmailButton({ variant = 'ghost', size = 'sm' }) {
+export default function CopyEmailButton({ variant = 'ghost', size = 'sm', label = 'Copy email' }) {
   const [copied, copy] = useCopyToClipboard();
   const [failed, setFailed] = useState(false);
   const failTimer = useRef(null);
@@ -44,13 +45,13 @@ export default function CopyEmailButton({ variant = 'ghost', size = 'sm' }) {
     }
   }
 
-  let label = 'Copy email';
-  if (copied) label = 'Copied';
-  else if (failed) label = "Couldn't copy, select it above";
+  let buttonText = label;
+  if (copied) buttonText = 'Copied';
+  else if (failed) buttonText = 'Select the address to copy it';
 
   return (
     <Button variant={variant} size={size} onClick={handleClick} aria-live="polite">
-      {label}
+      {buttonText}
     </Button>
   );
 }

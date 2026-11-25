@@ -15,11 +15,11 @@ import './AboutPage.css';
  *
  * Top to bottom:
  *   Story + ProfileCard : the personal intro, side by side
- *   RulesGrid           : "Rules I build by"
- *   AchievementList     : "Unlocked along the way"
+ *   RulesGrid           : "How I work"
+ *   AchievementList     : "A few milestones"
  *   Quote cards         : "What people say" (hidden until
  *                         src/data/recommendations.js has entries)
- *   MoreList            : "More of me"
+ *   MoreList            : "More about me"
  *
  * All of the other text lives in src/data/about.js.
  */
@@ -33,11 +33,11 @@ export default function AboutPage() {
         <ProfileCard rows={profileRows} />
       </div>
 
-      <SectionBlock title="Rules I build by">
+      <SectionBlock title="How I work">
         <RulesGrid rules={rules} />
       </SectionBlock>
 
-      <SectionBlock title="Unlocked along the way">
+      <SectionBlock title="A few milestones">
         <AchievementList items={achievements} />
       </SectionBlock>
 
@@ -52,7 +52,7 @@ export default function AboutPage() {
         </SectionBlock>
       )}
 
-      <SectionBlock title="More of me">
+      <SectionBlock title="More about me">
         <MoreList items={more} />
       </SectionBlock>
     </div>

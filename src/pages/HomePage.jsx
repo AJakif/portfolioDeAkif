@@ -1,33 +1,29 @@
-import { facts, homeTape, now } from '../data/profile.js';
+import { facts, homeTape } from '../data/profile.js';
+import { projects } from '../data/projects.js';
 import Hero from '../components/home/Hero.jsx';
 import FactGrid from '../components/home/FactGrid.jsx';
 import NowGrid from '../components/home/NowGrid.jsx';
 import SectionBlock from '../components/ui/SectionBlock.jsx';
 import Tape from '../components/ui/Tape.jsx';
+import './HomePage.css';
 
 /**
  * HomePage — URL: /
  *
- * Top to bottom:
- *   Hero      : name, typed role, intro, buttons, animated background
- *   Tape      : the scrolling apricot band
- *   FactGrid  : four headline numbers
- *   NowGrid   : "Selected work" cards
- *
- * All of the text lives in src/data/profile.js.
- * To reorder the page, move the components below.
+ * Shows the intro, scrolling strip, career highlights and selected projects.
  */
 export default function HomePage() {
   return (
     <>
       <Hero />
 
-      <div className="wrap">
+      <div className="wrap home-page__content">
         <Tape items={homeTape} />
-        <FactGrid facts={facts} />
-
-        <SectionBlock title="Selected work" intro="What I'm building now and what I've shipped. Pick one to open the full story.">
-          <NowGrid items={now} />
+        <SectionBlock title="A few highlights">
+          <FactGrid facts={facts} />
+        </SectionBlock>
+        <SectionBlock title="Selected work">
+          <NowGrid items={projects} />
         </SectionBlock>
       </div>
     </>

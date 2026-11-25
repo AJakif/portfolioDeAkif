@@ -4,13 +4,11 @@ import { useLocation } from 'react-router-dom';
 import useReducedMotion from './useReducedMotion.js';
 
 /*
- * Wipe timings in milliseconds. They MUST match the percentages in
- * src/components/layout/ViewWipe.css (total 1400ms):
- *   COVER = 350ms  -> 25% : panel has fully covered the screen
- *   LEAVE = 1000ms -> 71% : panel starts sliding away
+ * Wipe timings match the 1.4s sweep in ViewWipe.css.
+ * The panel covers the screen at 350ms and starts to leave at 1000ms.
  */
-export const WIPE_COVER_MS = 350;
-export const WIPE_LEAVE_MS = 1000;
+const WIPE_COVER_MS = 350;
+const WIPE_LEAVE_MS = 1000;
 
 // The first part of the URL: "/work/querio" -> "work", "/" -> "home".
 export const sectionOf = (pathname) => pathname.split('/')[1] || 'home';
