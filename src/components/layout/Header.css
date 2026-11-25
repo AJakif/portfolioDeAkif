@@ -28,11 +28,10 @@
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 1.05rem;
-  --glitch-amp: 0.5px; /* smaller jumps for small text */
+  --glitch-amp: 0.5px;
 }
 
-/* The logo glitches a bit more often than the hero name (every 3.5s vs 4.5s),
-   starting offset so the two rarely fire together. */
+/* Offset the header effects so the two marks flicker at different times. */
 .header__brand-name,
 .header__brand-name::before,
 .header__brand-name::after {
@@ -40,15 +39,18 @@
   animation-delay: -1.5s;
 }
 
+.header__copy {
+  white-space: nowrap;
+}
+
 .header__brand-kana {
   font-family: var(--font-kana);
   font-weight: 400;
   font-size: 0.95rem;
   color: var(--apricot);
+  white-space: nowrap;
 }
 
-/* The katakana runs on its own slower 5.5s cycle, offset from the name
-   (3.5s) so the two glitches rarely land together. */
 .header__brand-kana,
 .header__brand-kana::before,
 .header__brand-kana::after {
@@ -56,7 +58,11 @@
 }
 
 /* Phones: hide the copy button; the menu moves to the bottom (see Dock.css). */
-@media (max-width: 640px) {
+@media (max-width: 800px) {
+  .header__brand {
+    --tooltip-max-width: calc(100vw - 108px);
+  }
+
   .header__copy {
     display: none;
   }

@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
 import NetworkCanvas from '../home/NetworkCanvas.jsx';
+import { sectionOf } from '../../hooks/usePageWipe.js';
 
 /**
  * Layout — the frame around every page.
@@ -16,26 +17,31 @@ import NetworkCanvas from '../home/NetworkCanvas.jsx';
  */
 export default function Layout() {
   const { pathname } = useLocation();
-
-  // The first part of the URL: "/work/querio" -> "work", "/" -> "home".
-  const section = pathname.split('/')[1] || 'home';
+  const section = sectionOf(pathname);
+  const previousPath = useRef(pathname);
+  const mainRef = useRef(null);
 
   // Note: inside <Routes location={displayLocation}> (App.jsx), this is the
   // location being SHOWN, so during a wipe it updates only once the panel
   // covers the screen, and the scroll jump below happens out of sight.
 
-  // Jump back to the top when the visitor moves to a different section.
-  // Switching tabs inside Background keeps the scroll position, because
-  // the section ("background") stays the same.
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [section]);
+    const lastPath = previousPath.current;
+    previousPath.current = pathname;
+    const changedSection = sectionOf(lastPath) !== section;
+    const changedProject = section === 'work' && lastPath !== pathname;
+
+    if (changedSection || changedProject) {
+      window.scrollTo(0, 0);
+      mainRef.current.querySelector('h1')?.focus({ preventScroll: true });
+    }
+  }, [pathname, section]);
 
   return (
     <>
       {section !== 'home' && <NetworkCanvas variant="ambient" />}
       <Header />
-      <main>
+      <main ref={mainRef}>
         <Outlet />
       </main>
       <Footer />

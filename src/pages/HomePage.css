@@ -1,0 +1,5 @@
+/* HomePage — spacing between the full-width strip and the highlights. */
+
+.home-page__content > .section-block:first-of-type {
+  padding-top: var(--space-5);
+}

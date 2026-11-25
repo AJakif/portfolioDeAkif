@@ -30,28 +30,10 @@
   transform: translateY(-2px);
 }
 
-/* Index number and katakana tag on one line. */
-.more-list__meta {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 6px;
-}
-
-.more-list__index {
-  color: var(--apricot);
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-}
-
 .more-list__kana {
   color: var(--peri);
   font-family: var(--font-kana);
   font-size: 0.8rem;
-  opacity: 0.75;
 }
 
 .more-list__title {

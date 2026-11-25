@@ -17,9 +17,17 @@
 }
 
 .skill-card__used {
+  display: grid;
+  gap: var(--space-1);
   margin-top: auto; /* pushes this line to the bottom so cards line up */
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.skill-card__used ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px var(--space-4);
 }
 
 .skill-card__used b {

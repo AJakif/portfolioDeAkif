@@ -64,9 +64,15 @@ button {
 
 /* A clear outline for people who navigate with the keyboard. */
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+summary:focus-visible {
   outline: 3px solid var(--apricot);
   outline-offset: 3px;
+}
+
+/* Page headings receive focus after navigation. They aren't controls. */
+main h1[tabindex="-1"]:focus {
+  outline: none;
 }
 
 /*
@@ -80,8 +86,12 @@ button:focus-visible {
 }
 
 /* On phones the menu floats at the bottom, so leave room under the page. */
-@media (max-width: 640px) {
+@media (max-width: 800px) {
+  html {
+    scroll-padding-block: 68px calc(76px + env(safe-area-inset-bottom));
+  }
+
   body {
-    padding-bottom: 76px;
+    padding-bottom: calc(76px + env(safe-area-inset-bottom));
   }
 }

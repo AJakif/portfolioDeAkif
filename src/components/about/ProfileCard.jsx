@@ -25,10 +25,10 @@ export default function ProfileCard({ rows }) {
         <div className="profile-card__top">
           {/* plain: no dotted underline, because the trigger is a shape. */}
           <Tooltip {...kanaInitialGloss} align="start" plain>
-            <span className="profile-card__avatar">{profile.kanaInitial}</span>
+            <span className="profile-card__avatar" lang="ja">{profile.kanaInitial}</span>
           </Tooltip>
           <div>
-            <h3 className="profile-card__name">{profile.name}</h3>
+            <h2 className="profile-card__name">{profile.name}</h2>
             <p className="profile-card__role">{profile.title}</p>
           </div>
         </div>

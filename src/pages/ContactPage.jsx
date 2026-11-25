@@ -10,42 +10,37 @@ import './ContactPage.css';
 /**
  * ContactPage — URL: /contact
  *
- * Left  : big heading, a short line, and a live clock
- * Right : topic buttons, then the contact rows (email, LinkedIn, GitHub)
- *
- * HOW THE TOPIC BUTTONS WORK
- *   This page remembers which topic is selected (`selectedTopic`).
- *   - TopicPicker shows the buttons and reports clicks.
- *   - ChannelList receives the topic's subject line and puts it into
- *     the "Write the email" link.
- *   Keeping the state here, in the shared parent, is how two sibling
- *   components stay in sync in React ("lifting state up").
+ * Email is available immediately. The optional topic fills in the subject
+ * in both the email app and Gmail links.
  *
  * Text and topics: src/data/contact.js
  * Email and links: src/data/profile.js
  */
 export default function ContactPage() {
-  // The first topic is selected when the page opens.
-  const [selectedTopic, setSelectedTopic] = useState(topics[0]);
+  const [selectedTopic, setSelectedTopic] = useState(null);
 
   return (
     <div className="wrap">
       <div className="contact-page">
-        <div className="contact-page__left">
-          <h1 className="contact-page__heading">{contact.heading}</h1>
+        <div className="contact-page__intro-block">
+          <h1 className="contact-page__heading" tabIndex={-1}>{contact.heading}</h1>
           <p className="contact-page__intro">{contact.intro}</p>
-          <LocalClock timeZone={contact.timeZone} label={contact.timeZoneLabel} />
         </div>
 
-        <div className="contact-page__right">
-          <h2 className="contact-page__question">What's it about?</h2>
-          <TopicPicker topics={topics} selected={selectedTopic} onSelect={setSelectedTopic} />
+        <div className="contact-page__channels">
+          <ChannelList subject={selectedTopic?.subject}>
+            <details className="contact-page__topics">
+              <summary>Add a subject <span>(optional)</span></summary>
+              <TopicPicker topics={topics} selected={selectedTopic} onSelect={setSelectedTopic} />
+              <p className="contact-page__subject" role="status">
+                {selectedTopic?.subject && <>Email subject <b>{selectedTopic.subject}</b></>}
+              </p>
+            </details>
+          </ChannelList>
+        </div>
 
-          <p className="contact-page__subject">
-            Your email will open with the subject <b>{selectedTopic.subject}</b>
-          </p>
-
-          <ChannelList subject={selectedTopic.subject} />
+        <div className="contact-page__clock">
+          <LocalClock timeZone={contact.timeZone} label={contact.timeZoneLabel} />
         </div>
       </div>
 

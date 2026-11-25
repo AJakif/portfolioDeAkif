@@ -10,8 +10,15 @@
 
 .view-wipe {
   position: fixed;
-  inset: -10% -30%; /* larger than the screen so the slanted edges stay hidden */
+  inset: 0;
   z-index: 50; /* above everything */
+  overflow: clip;
+  pointer-events: none;
+}
+
+.view-wipe__panel {
+  position: absolute;
+  inset: -10% -30%; /* larger than the screen so the slanted edges stay hidden */
   display: grid;
   place-items: center; /* centers the name; the panel's center is the screen's center */
   /* A dark panel (the card color) instead of a bright one, so changing
@@ -19,7 +26,6 @@
      panel moves, as a streak of color on the way in and out. */
   background: var(--panel);
   border-inline: 6px solid var(--apricot);
-  pointer-events: none; /* never blocks clicks */
   will-change: transform;
   animation: view-wipe 1.4s linear forwards;
 }

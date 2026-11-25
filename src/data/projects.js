@@ -9,7 +9,10 @@
  *   id       (required) unique, lowercase, no spaces. Used in the URL: /work/<id>
  *   name     (required) project name
  *   kind     (required) one-line description shown above the name
- *   short    (required) small label under the name in the project list
+ *   short    (required) small label on the project card
+ *   preview  (required) short description for the Home and Work cards
+ *   homeLabel (optional) label for the Home card when it differs from short
+ *   summary  (required) what it does, your contribution, and the outcome or status
  *   meta     (required) three quick facts: [{ label, value }]
  *   problem  (required) a short paragraph: what problem does it solve?
  *   built    (required) bullet list of what was built
@@ -17,42 +20,47 @@
  *   flow     (optional) numbered steps: { title, steps: [{ name, note }] }
  *   idea     (optional) one highlighted sentence, the key idea
  *   links    (optional) buttons to outside pages: [{ label, url }]
+ *   image    (optional) real project screenshot: { file, alt, width, height, caption }
+ *   contextTitle, builtTitle, stackTitle (optional) headings tailored to the project
  */
 export const projects = [
   {
     id: 'hire-a-mind',
     name: 'Hire-a-Mind',
-    kind: 'Hiring intelligence platform, from job description to offer',
+    kind: 'AI tools for hiring teams',
     short: 'Inument',
+    homeLabel: 'Inument, now',
+    preview: 'I built the voice interviewer and worked on the AI and cloud services behind the hiring platform.',
+    summary:
+      'Hire-a-Mind helps recruiters screen CVs, run interviews, and compare candidates. I built the voice interviewer from scratch, worked on how interviews are scored, and helped set up the AWS infrastructure.',
     meta: [
       { label: 'Where', value: 'Inument Solution Limited' },
       { label: 'My role', value: 'AI Engineer' },
       { label: 'Status', value: 'Live, launched 2026' },
     ],
     problem:
-      "Hiring decisions still rest on interview notes, memory and gut feel, and recording tools stop at the transcript. Hire-a-Mind connects every step of hiring with evidence: it drafts the role, screens CVs, runs first-round AI interviews, scores human panels against the same criteria and puts finalists side by side. It's built for recruitment agencies, high-volume BPO teams and growing in-house teams.",
+      'It’s hard to compare candidates when every interviewer takes different notes. Hire-a-Mind gives the team a shared set of criteria and keeps the interview answers behind each score so a recruiter can review them.',
     flow: {
-      title: 'One flow from role to offer',
+      title: 'How a hiring round works',
       steps: [
         { name: 'Beacon', note: 'Drafts the job description and weighted criteria' },
         { name: 'Sift', note: 'Scores and ranks every CV, with the lines behind each score' },
         { name: 'Scout', note: 'Text or voice AI interviews, on the candidate’s schedule' },
-        { name: 'Panel', note: 'Human interviews on Google Meet, scored on the same bar' },
-        { name: 'Laura', note: 'Compares finalists into one decision record and offer' },
+        { name: 'Panel', note: 'Uses the same criteria to score interviews on Google Meet' },
+        { name: 'Laura', note: 'Puts finalists side by side for the hiring team' },
       ],
     },
     built: [
-      'The AI interviewer, built from scratch: smooth voice interviews that greet the candidate, ask follow-up questions based on each answer, and save the full transcript',
-      'Built to meet the compliance rules for AI : GDPR, the EU AI Act, NYC Local Law 144, EEOC guidance, SOC 2 and ISO 27001',
-      'A four-agent LangGraph orchestrator that scores each criterion in isolation: Capability, Communication, Behavioral, and Potential and fit',
-      'Scoring on a BARS 1 to 5 rubric, combined with role-specific weights and a confidence adjustment; borderline and knockout results go to a human reviewer',
+      'Built the voice interviewer to ask follow-up questions based on each answer and save the full transcript',
+      'Used four LangGraph agents to score separate criteria, including capability and communication',
+      'Used a 1–5 scoring guide with weights that vary by role',
       'A dual-vector RAG pipeline on PGVector and ChromaDB, with hybrid caching of user data and system prompts to cut token cost',
       'Multilingual speech recognition with speaker diarization, so every answer is tied to who said it',
-      'A production MCP server that lets non-technical teams, or any AI agent, query evaluation data in plain language',
+      'An MCP server so teams can ask about evaluation data in plain language from a connected AI tool',
       'Model routing per plan tier and organisation, backed by cost-per-token research across providers',
       'AWS infrastructure (EC2, S3, CloudFront) in Terraform, AI observability in Signoz, and TDD with pytest',
     ],
-    idea: 'AI assesses, people decide. A low score sends a candidate to a person, never to the reject pile.',
+    idea: 'I worked on sending borderline scores and potential disqualifiers to a human reviewer.',
     stack: [
       'LangGraph',
       'LangChain',
@@ -69,7 +77,7 @@ export const projects = [
       'pytest',
     ],
     links: [
-      { label: 'hireamind.ai', url: 'https://www.hireamind.ai/' },
+      { label: 'Visit Hire-a-Mind', url: 'https://www.hireamind.ai/' },
       { label: 'Hire-a-Mind on Product Hunt', url: 'https://www.producthunt.com/products/hire-a-mind' },
     ],
   },
@@ -79,13 +87,17 @@ export const projects = [
     name: 'ELX Chatbot',
     kind: 'AI sales assistant for online stores',
     short: 'Echologyx',
+    homeLabel: 'Echologyx, 2023 – 2025',
+    preview: 'I led the AI work from demo to launch. We made the chatbot’s replies 10× faster.',
+    summary:
+      'I led the AI work on ELX Chatbot from demo to a live app for Shopify, WooCommerce, and BigCommerce. We made replies 10× faster by reusing answers to common questions and speeding up how the app looks up products.',
     meta: [
       { label: 'Where', value: 'Echologyx Ltd' },
       { label: 'My role', value: 'Software Engineer, led core AI service development' },
       { label: 'Status', value: 'Live on Shopify, WooCommerce and BigCommerce' },
     ],
     problem:
-      "Most of a store's support questions repeat, and shoppers ask things a search box can't answer: what fits my budget, which one suits me, where is my order. ELX Chatbot learns the store's catalogue and FAQs, recommends products, tracks orders and hands the chat to a person with full context when it should. I led it from a demo to a plug-and-play product that stores install on Shopify, WooCommerce, BigCommerce and Adobe Commerce, in 80+ languages.",
+      'Shoppers ask things a search box can’t answer. What fits my budget? Where’s my order? ELX answers using the store’s catalogue and support information, and hands the full chat to a person when the shopper needs more help.',
     flow: {
       title: 'What happens when a shopper asks',
       steps: [
@@ -97,17 +109,16 @@ export const projects = [
       ],
     },
     built: [
-      'The assistant end to end on GPT, Gemini, LangChain, Ollama, Redis, FastAPI and MongoDB, with a self-built RAG system',
-      "A natural-language search extension for a client's store, routing site search through the RAG engine so shoppers can search in plain words",
-      "An automatic switch between OpenAI and Gemini, so one provider's outage doesn't take the assistant down",
-      'Responses 10 times faster through prompt engineering, caching, intent verification and tuned vector retrieval',
-      'Cost-per-token research and dynamic model switching that lowered LLM costs for the client',
-      'Web scrapers (BeautifulSoup, Playwright) and automated EDA pipelines to process and enrich client data',
+      'Built the AI service and the catalogue search that supplies product information before the assistant replies',
+      'Added a search box for a client’s store so shoppers could describe what they wanted in their own words',
+      'Set up automatic switching between OpenAI and Gemini so the assistant could keep working during an outage',
+      'Compared model costs and switched between models to lower running costs',
+      'Automated how we collected, cleaned, and checked client data',
     ],
     idea: 'Answer from the store’s real catalogue, and know when to hand over to a human.',
     stack: ['LangChain', 'FastAPI', 'GPT', 'Gemini', 'Ollama', 'Redis', 'MongoDB', 'Sentence transformers', 'Playwright'],
     links: [
-      { label: 'elxchatbot.ai', url: 'https://www.elxchatbot.ai/' },
+      { label: 'Visit ELX Chatbot', url: 'https://www.elxchatbot.ai/' },
       { label: 'Shopify App Store listing', url: 'https://apps.shopify.com/elx-chatbot' },
     ],
   },
@@ -142,13 +153,24 @@ export const projects = [
     name: 'Querio',
     kind: 'Open-source data assistant',
     short: 'Open source',
+    preview: 'Ask your database a question in plain English. Querio shows you the query it ran so you can check the answer.',
+    summary:
+      'I built Querio so people can ask a database a question in plain English, get an answer, and see the exact query behind it. Reviewers can mark queries they’ve checked so teammates know which ones have been verified.',
+    contextTitle: 'Why I built it',
     meta: [
-      { label: 'Where', value: 'Personal project, Apache 2.0' },
+      { label: 'Where', value: 'Personal project, MIT license' },
       { label: 'My role', value: 'Creator' },
       { label: 'Status', value: 'Version 3 in development' },
     ],
     problem:
-      "Two analysts bring two different numbers from the same data, and the person deciding can't check either. Querio lets anyone ask a question in plain language and see exactly how the answer was produced. It is self-hosted, so the data never leaves your own instance.",
+      'Two people can get different numbers from the same database by counting different things. I wanted the assumptions and the query to be easy to find, especially when an answer gets shared with someone who wasn’t there to ask the original question.',
+    image: {
+      file: 'querio-answer.png',
+      alt: 'Querio showing an answer marked Unverified and the database query in its Show the work panel',
+      width: 1280,
+      height: 1250,
+      caption: 'An early Querio answer with its verification status and the SQL query behind it.',
+    },
     flow: {
       title: 'Four agents, one after another',
       steps: [
@@ -161,42 +183,48 @@ export const projects = [
     built: [
       'LangGraph orchestrating four Pydantic AI agents, each with its own model setting',
       'Bring your own API key, or run local models through Ollama',
-      'Every answer shows its assumptions and the full SQL reasoning behind it',
+      'Answers show the assumptions and the SQL that ran',
       'Verified queries carry the name of the person who verified them, with four trust states from Verified to Unverified',
     ],
-    idea: 'Generating SQL is no longer the hard problem. Trusting the answer is.',
     stack: ['LangGraph', 'Pydantic AI', 'dbt', 'React', 'Ollama', 'Anthropic', 'OpenAI'],
-    links: [{ label: 'Querio on GitHub', url: 'https://github.com/AJakif/Querio' }],
+    links: [{ label: 'View on GitHub', url: 'https://github.com/AJakif/Querio' }],
   },
 
   {
     id: 'pencil',
     name: 'Pencil',
-    kind: 'Bangla persona writing research',
-    short: 'Research',
+    kind: 'Research on writing style in Bangla',
+    short: 'Research in progress',
+    homeLabel: 'Research',
+    preview: 'Can a small model on a phone write Bangla in one author’s voice?',
+    summary:
+      'Can a small model running offline on a phone write Bangla in one author’s style? I’m gathering writing samples with the authors’ consent and deciding how to test the results.',
+    contextTitle: 'Why I’m testing this',
+    builtTitle: 'What I’m testing',
+    stackTitle: 'Tools I’m considering',
     meta: [
       { label: 'Where', value: 'Independent research' },
       { label: 'My role', value: 'Researcher and engineer' },
-      { label: 'Status', value: 'Preparing the corpus' },
+      { label: 'Status', value: 'Gathering writing samples' },
     ],
     problem:
-      'Can a small model that runs fully offline on a phone write Bangla in the voice of one specific author? The authors come from a private literary writing group and have given their consent. Privacy is the hard constraint, so nothing leaves the device.',
+      'I want to find out whether a phone can run a model small enough to work offline and still pick up the details that make a writer’s style recognizable. The writing comes from a private literary group, so keeping it on the device is part of the experiment.',
     flow: {
-      title: 'Five hypotheses, each with pass and fail criteria set in advance',
+      title: 'Five questions I want to answer',
       steps: [
-        { name: 'Style is separable', note: 'Authors can be told apart' },
-        { name: 'Fine-tuning beats prompting' },
-        { name: 'There is enough data' },
-        { name: 'It survives quantization', note: 'Quality holds at 4-bit' },
-        { name: 'Indistinguishable', note: "Readers can't tell" },
+        { name: 'Can we tell the authors apart?' },
+        { name: 'Does extra training help more than prompts alone?' },
+        { name: 'How many samples does it take?' },
+        { name: 'Does it still work after shrinking the model?' },
+        { name: 'Can readers tell who wrote it?' },
       ],
     },
     built: [
-      'LoRA fine-tuning of a small Bangla-capable model (Gemma 3 4B or TigerLLM), quantized to 4-bit and served with llama.cpp or MediaPipe',
-      'Training pairs built by instruction backtranslation: real posts as outputs, synthetic prompts kept short to match how people will really prompt it',
-      'Evaluation with an authorship classifier, a blind panel of the authors and an LLM judge',
+      'Compare prompting with LoRA fine-tuning, a way to train a model without changing all of it',
+      'See how the model handles short prompts and whether quality holds once it’s small enough to run on a phone',
+      'Ask authors to judge samples without seeing who or what wrote them, then compare their scores with automated checks',
     ],
-    idea: 'Decide what counts as failure before you run the experiment.',
+    idea: 'I’m setting the pass and fail criteria before running the experiment.',
     stack: ['LoRA', 'Gemma 3 4B', 'TigerLLM', 'llama.cpp', 'MediaPipe', 'SQLite'],
   },
 ];

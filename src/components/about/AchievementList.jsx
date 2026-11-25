@@ -1,7 +1,7 @@
 import './AchievementList.css';
 
 /**
- * AchievementList — the "Unlocked along the way" cards on the About page.
+ * AchievementList — the milestone cards on the About page.
  *
  * @param {{ badge: string, title: string, text: string }[]} items
  *        From `achievements` in src/data/about.js.

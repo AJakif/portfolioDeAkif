@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 
 import { getProjectById, projects } from '../data/projects.js';
 import ProjectDetail from '../components/work/ProjectDetail.jsx';
@@ -7,36 +7,33 @@ import ViewHeader from '../components/ui/ViewHeader.jsx';
 import './WorkPage.css';
 
 /**
- * WorkPage — URLs: /work and /work/<project id>
- *
- * Left  : the list of projects
- * Right : the details of the selected project
- *
- * Which project is selected comes from the URL, not from React state.
- * That means a link like /work/querio always opens Querio, and the
- * browser's Back button moves between projects.
- *
- * To add or edit projects, change src/data/projects.js only.
+ * WorkPage — a project overview at /work and a story at each /work/<id>.
  */
 export default function WorkPage() {
-  // Reads ":projectId" from the route "work/:projectId" (see src/App.jsx).
   const { projectId } = useParams();
 
-  // If the URL has no id, or an id we don't know, show the first project.
-  const project = getProjectById(projectId) ?? projects[0];
+  if (projectId === undefined) {
+    return (
+      <div className="wrap">
+        <ViewHeader title="Work">
+          <p>A few projects I’ve worked on, plus a Bangla writing experiment I’m still figuring out.</p>
+        </ViewHeader>
+        <div className="work-page__projects">
+          <ProjectList projects={projects} />
+        </div>
+      </div>
+    );
+  }
+
+  const project = getProjectById(projectId);
+  if (!project) return <Navigate to="/work" replace />;
 
   return (
-    <div className="wrap">
-      <ViewHeader title="Work">
-        <p>Four systems. Two are live products, one is my startup, one is open source and one is research.</p>
-      </ViewHeader>
-
-      <div className="work-page__grid">
-        <ProjectList projects={projects} currentId={project.id} />
-        {/* key={project.id} gives each project a fresh panel, so nothing
-            from the previous project lingers when you switch. */}
-        <ProjectDetail key={project.id} project={project} />
-      </div>
+    <div className="wrap work-page__story">
+      <Link to="/work" className="work-page__back">
+        <span aria-hidden="true">←</span> All projects
+      </Link>
+      <ProjectDetail project={project} />
     </div>
   );
 }
