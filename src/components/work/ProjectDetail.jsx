@@ -5,25 +5,28 @@ import ProjectFlow from './ProjectFlow.jsx';
 import './ProjectDetail.css';
 
 /**
- * ProjectDetail — the big panel that shows one project.
- *
- * @param {object} project One project object from src/data/projects.js.
- *                         See the top of that file for every field.
- *
- * Sections, in order:
- *   kind + name -> quick facts -> the problem -> steps (optional)
- *   -> what I built -> key idea (optional) -> tech tags -> links (optional)
- *
- * Optional sections only render when the project has that field,
- * using the `condition && <element>` pattern.
+ * ProjectDetail — a project story with the summary and links up front.
+ * The fields come from src/data/projects.js.
  */
 export default function ProjectDetail({ project }) {
   return (
     <article className="project-detail">
       <header>
         <p className="project-detail__kind">{project.kind}</p>
-        <h2 className="project-detail__name">{project.name}</h2>
+        <h1 className="project-detail__name" tabIndex={-1}>{project.name}</h1>
       </header>
+
+      <p className="project-detail__prose project-detail__summary">{project.summary}</p>
+
+      {project.links && (
+        <div className="project-detail__links">
+          {project.links.map((link, index) => (
+            <Button key={link.url} href={link.url} variant={index === 0 ? 'hot' : 'default'}>
+              {link.label}
+            </Button>
+          ))}
+        </div>
+      )}
 
       {/* Quick facts: where, role, status. */}
       <dl className="project-detail__meta">
@@ -36,38 +39,41 @@ export default function ProjectDetail({ project }) {
       </dl>
 
       <section>
-        <h3 className="project-detail__heading">The problem</h3>
+        <h2 className="project-detail__heading">{project.contextTitle ?? 'Why we built it'}</h2>
         <p className="project-detail__prose">{project.problem}</p>
       </section>
 
+      {project.image && (
+        <figure className="project-detail__figure">
+          <img
+            src={`${import.meta.env.BASE_URL}${project.image.file}`}
+            alt={project.image.alt}
+            width={project.image.width}
+            height={project.image.height}
+            loading="lazy"
+          />
+          <figcaption>{project.image.caption}</figcaption>
+        </figure>
+      )}
+
+      {project.idea && <p className="project-detail__idea">{project.idea}</p>}
+
       {project.flow && (
         <section>
-          <h3 className="project-detail__heading">{project.flow.title}</h3>
+          <h2 className="project-detail__heading">{project.flow.title}</h2>
           <ProjectFlow steps={project.flow.steps} />
         </section>
       )}
 
       <section>
-        <h3 className="project-detail__heading">What I built</h3>
+        <h2 className="project-detail__heading">{project.builtTitle ?? 'What I built'}</h2>
         <TickList items={project.built} />
       </section>
 
-      {project.idea && <p className="project-detail__idea">{project.idea}</p>}
-
       <section>
-        <h3 className="project-detail__heading">Built with</h3>
+        <h2 className="project-detail__heading">{project.stackTitle ?? 'Built with'}</h2>
         <TagList items={project.stack} />
       </section>
-
-      {project.links && (
-        <div className="project-detail__links">
-          {project.links.map((link) => (
-            <Button key={link.url} href={link.url}>
-              {link.label}
-            </Button>
-          ))}
-        </div>
-      )}
     </article>
   );
 }

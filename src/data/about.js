@@ -7,19 +7,19 @@
  * The first paragraph is shown larger than the rest.
  */
 export const story = [
-  "I'm a full stack engineer who ended up building AI, and I think that order matters.",
-  'I started on the load-bearing parts of software. At Spectrum Engineering Consortium I built Angular and .NET Core apps with secure sign-in and SSO, and learned how much a slow query costs when I took a dashboard from over five minutes to under thirty seconds.',
-  "At Echologyx I led ELX Chatbot from a demo to an AI sales assistant that stores install on Shopify, WooCommerce and BigCommerce. That meant RAG and model failover, but also caching, scrapers, client demos and an API that stays up when a provider goes down.",
-  "Now at Inument I build the AI and the infrastructure behind Hire-a-Mind: LangGraph agents that score interviews, speech recognition, an MCP server, model routing and the AWS underneath, all in Terraform. Across all of it I care about one question: can anyone trust the answer? I gave a talk on that, Building Scalable AI Evaluation Systems, at AI Adda for Senior Tech Professionals.",
-  "I studied computer science with a data science major at AIUB in Dhaka, taught algorithms and AI as a TA, and went to Utah as mechanical team lead and rover operator for the AIUB Robotic Crew's Mars rover. Before I build, I write the spec and keep a log of why. Off screen I shoot street and landscape photography and sketch in pencil. Anime shaped my eye for design, this site included, and I do most of my coding at night.",
+  'I got my start building business web apps. One dashboard took more than five minutes to load. I got it down to under 30 seconds by fixing the database queries.',
+  'Before that, I led the mechanical team for the AIUB Robotic Crew and operated our Mars rover at the University Rover Challenge in Utah. Away from the keyboard, I shoot street and landscape photos and sketch in pencil. Anime shaped how I think about design, including this site.',
+  'At Echologyx, I led the AI work on a shopping assistant from demo to launch. Part of that work was making sure it could keep answering questions when a model provider went down.',
+  'Now at Inument, I work on AI features, web apps, and the cloud services behind them. I spend a lot of time thinking about how to check an AI answer. I gave a talk about that at AI Adda for Senior Tech Professionals.',
+  'I studied computer science and data science at AIUB in Dhaka and helped teach algorithms and AI there. I still do most of my coding at night.',
 ];
 
 /** Rows on the profile card. Add or remove rows freely. */
 export const profileRows = [
   { label: 'Base', value: 'Dhaka, Bangladesh' },
   { label: 'Day job', value: 'AI Engineer, Inument Solution Limited' },
-  { label: 'Experience', value: '5+ years, full stack to generative AI' },
-  { label: 'Studied', value: 'BSc CSE (data science major), AIUB' },
+  { label: 'Experience', value: '5+ years in web development and AI' },
+  { label: 'Studied', value: 'Computer science and data science at AIUB' },
   { label: 'Off screen', value: 'Street and landscape photography, pencil sketching' },
   { label: 'Speaks', value: 'Bengali, English, some Hindi' },
   { label: 'Active hours', value: 'Night' },
@@ -27,19 +27,19 @@ export const profileRows = [
 
 /** "Rules I build by" cards. */
 export const rules = [
-  { title: 'Trust is the product', text: "Generating an answer is no longer the hard part. Showing why it's right is." },
-  { title: 'Fail closed', text: 'If a safety check breaks, nothing gets through. No exceptions.' },
+  { title: 'Show where an answer came from', text: 'In Querio, I show the database query with the answer so anyone reviewing it can see what got counted.' },
+  { title: 'Stop if a check fails', text: 'If a required check fails, I stop that step so someone can look into it.' },
   {
-    title: 'Decide what failure looks like first',
-    text: "I set thresholds and pass criteria before I run an experiment, so I can't talk myself into the result.",
+    title: 'Decide what counts as a pass',
+    text: 'I write down what a good result would look like before an experiment. It’s much easier to be honest about the results that way.',
   },
-  { title: 'Diagnose before redesigning', text: 'A system that chokes on a small dataset has a leak, not a scaling problem.' },
-  { title: 'Scope before building', text: 'A requirements doc and a decision log come before the first commit.' },
-  { title: 'Lean and defensible', text: 'I pick the design I can justify over the one with the most features.' },
+  { title: 'Find what’s slow first', text: 'When a page takes ages to load, I start by measuring where the time goes.' },
+  { title: 'Write down what we’re building', text: 'I agree on what the first version needs to do and keep a short note on the big decisions.' },
+  { title: 'Keep it simple', text: 'I look for a design I can explain to the person who’ll have to maintain it.' },
 ];
 
 /**
- * "Unlocked along the way" achievements.
+ * Milestones shown on the About page.
  *   badge : 1 to 3 characters shown in the small square
  */
 export const achievements = [
@@ -76,7 +76,7 @@ export const achievements = [
 ];
 
 /**
- * "More of me" short notes.
+ * Short notes about interests outside the project pages.
  *   kana : small katakana tag shown on the card (decorative)
  *   The first item is shown as a wide card.
  */
@@ -84,17 +84,17 @@ export const more = [
   {
     kana: 'フォト',
     title: 'Photography',
-    text: 'Street, landscape and lifestyle. I was the official photographer of many major events in university and conferences, and I post my work on Instagram as @akfigram.',
+    text: 'I like shooting streets, landscapes, and everyday life. I also photographed university events and conferences. I share my photos on Instagram as @akfigram.',
   },
   {
     kana: 'スケッチ',
     title: 'Pencil sketching',
-    text: 'Just pencil and paper. Sketching trained the same eye for line and composition that shapes my photos and this site.',
+    text: 'Just pencil and paper. Sketching has changed how I frame my photos.',
   },
   {
     kana: 'リーダー',
-    title: 'Also led',
-    text: 'A patrol in Bangladesh Scouts, and served as Cadet Sergeant in the Bangladesh National Cadet Corps.',
+    title: 'Scouts and cadets',
+    text: 'I led a patrol in Bangladesh Scouts and served as a Cadet Sergeant in the Bangladesh National Cadet Corps.',
   },
   {
     kana: 'ライティング',
@@ -104,6 +104,6 @@ export const more = [
   {
     kana: 'ツール',
     title: 'How I use AI myself',
-    text: 'I build my own AI skills for thinking: one interviews me one question at a time, another turns the conversation into a requirements doc.',
+    text: 'When I’m working through an idea, I use a tool I made that asks me one question at a time. Then I turn the conversation into a short plan.',
   },
 ];

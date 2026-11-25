@@ -1,16 +1,19 @@
-/* WorkPage — two-column layout: project list + project detail. */
+/* WorkPage — the project overview and the shared project story layout. */
 
-.work-page__grid {
-  display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  gap: 20px;
-  align-items: start;
-  margin-top: 32px;
+.work-page__projects {
+  margin-top: var(--space-6);
 }
 
-/* Tablets and phones: the list sits above the detail. */
-@media (max-width: 900px) {
-  .work-page__grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.work-page__story {
+  max-width: 1024px;
+  padding-top: clamp(22px, 5vw, 56px);
+}
+
+.work-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  margin-bottom: var(--space-3);
+  font-weight: 700;
 }

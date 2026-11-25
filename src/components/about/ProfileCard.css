@@ -3,6 +3,7 @@
 /* Gradient border trick: a gradient background with 3px padding,
    and a solid inner card on top. The 3px that shows is the "border". */
 .profile-card {
+  --tooltip-max-width: calc(100vw - 84px);
   padding: 3px;
   border-radius: var(--radius-lg);
   background: linear-gradient(140deg, var(--peri), var(--apricot));

@@ -3,20 +3,19 @@ import { Link } from 'react-router-dom';
 import './NowGrid.css';
 
 /**
- * NowGrid — the "What I'm on right now" cards on the Home page.
+ * NowGrid — the selected project cards on the Home page.
  * Each card is a link that opens the matching project on the Work page.
  *
- * @param {{ projectId: string, tag: string, title: string, text: string }[]} items
- *        From `now` in src/data/profile.js.
+ * @param {object[]} items From `projects` in src/data/projects.js.
  */
 export default function NowGrid({ items }) {
   return (
     <div className="now-grid">
       {items.map((item) => (
-        <Link key={item.projectId} to={`/work/${item.projectId}`} className="now-grid__card">
-          <small className="now-grid__tag">{item.tag}</small>
-          <h3 className="now-grid__title">{item.title}</h3>
-          <p className="now-grid__text">{item.text}</p>
+        <Link key={item.id} to={`/work/${item.id}`} className="now-grid__card">
+          <small className="now-grid__tag">{item.homeLabel ?? item.short}</small>
+          <h3 className="now-grid__title">{item.name}</h3>
+          <p className="now-grid__text">{item.preview}</p>
         </Link>
       ))}
     </div>

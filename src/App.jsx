@@ -34,7 +34,7 @@ export default function App() {
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
 
-          {/* /work shows the first project, /work/querio shows a specific one. */}
+          {/* /work lists the projects. /work/querio opens a specific story. */}
           <Route path="work" element={<WorkPage />} />
           <Route path="work/:projectId" element={<WorkPage />} />
 

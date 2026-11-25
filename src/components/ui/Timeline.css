@@ -1,70 +1,135 @@
-/* Timeline — a vertical rail with diamond markers. */
-
 .timeline {
-  display: grid;
-  margin-left: 8px; /* room for the half of each diamond that sits left of the rail */
-  border-left: 2px solid var(--line); /* the rail */
+  margin-top: var(--space-5);
+  border-bottom: 1px solid var(--line);
 }
 
 .timeline__item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-  padding: 0 0 var(--space-7) 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 10px clamp(24px, 4vw, 54px);
+  align-items: start;
+  padding: 19px clamp(13px, 2.4vw, 25px);
+  overflow-wrap: anywhere;
 }
 
-.timeline__item:last-child {
-  padding-bottom: 0;
+.timeline__item + .timeline__item {
+  border-top: 1px solid var(--line);
 }
 
-/* The diamond marker: a small square rotated 45 degrees, centered on the rail.
-   Past events are hollow (filled with the page colour). */
-.timeline__item::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 6px;
-  width: 14px;
-  height: 14px;
-  border: 3px solid var(--apricot);
-  background: var(--bg);
-  transform: rotate(45deg);
-}
-
-/* Something still going on gets a solid diamond. */
-.timeline__item--current::before {
-  background: var(--apricot);
-}
-
-.timeline__when {
-  color: var(--apricot);
-  font-size: 0.92rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums; /* years line up from row to row */
+.timeline__item--featured {
+  border-radius: 0 var(--radius-sm) 0 0;
+  background: var(--panel);
+  box-shadow: inset 3px 0 var(--apricot);
 }
 
 .timeline__title {
-  font-weight: 800;
-  font-size: 1.35rem;
-  line-height: 1.2;
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  line-height: 1.25;
+  text-wrap: wrap;
 }
 
 .timeline__subtitle {
+  margin-top: 3px;
+  color: var(--muted);
   font-weight: 700;
 }
 
-.timeline__text {
-  max-width: 62ch;
-  margin-top: var(--space-2);
+.timeline__when {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline__text,
+.timeline__details {
+  max-width: 65ch;
+}
+
+.timeline__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  gap: 0 clamp(12px, 2vw, 24px);
+  margin-top: 2px;
+}
+
+.timeline__link,
+.timeline__details summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--peri);
+  font-size: 0.94rem;
+  font-weight: 700;
+}
+
+.timeline__link:hover,
+.timeline__details summary:hover {
+  color: var(--apricot);
+}
+
+.timeline__details {
+  min-width: 0;
   color: var(--muted);
 }
 
-/* Extra content under the text (bullets, buttons). */
-.timeline__content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-4);
-  margin-top: var(--space-3);
+.timeline__details[open] {
+  flex-basis: 100%;
+}
+
+.timeline__details summary {
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.timeline__details summary:focus-visible {
+  outline: 3px solid var(--apricot);
+  outline-offset: 3px;
+}
+
+.timeline__details summary::-webkit-details-marker {
+  display: none;
+}
+
+.timeline__details summary::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin: -4px 2px 0;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.timeline__details[open] summary::before {
+  margin-top: 3px;
+  transform: rotate(225deg);
+}
+
+.timeline__details:not([open]) .timeline__details-hide,
+.timeline__details[open] .timeline__details-show {
+  display: none;
+}
+
+.timeline__details ul {
+  padding-inline-start: 21px;
+  list-style: disc;
+}
+
+.timeline__details li + li {
+  margin-top: 5px;
+}
+
+.timeline__details li::marker {
+  color: var(--apricot);
+}
+
+@media (max-width: 750px) {
+  .timeline__item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding-block: 15px;
+  }
 }

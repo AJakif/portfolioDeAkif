@@ -1,0 +1,20 @@
+.background-page .view-header {
+  padding-top: clamp(24px, 4vw, 44px);
+}
+
+.background-page .view-header__title {
+  font-size: clamp(2rem, 5.5vw, 3.2rem);
+  line-height: 1.1;
+}
+
+.background-page .section-block {
+  padding-top: clamp(30px, 5vw, 52px);
+}
+
+.background-page .section-block__title {
+  font-size: clamp(1.15rem, 2.4vw, 1.58rem);
+}
+
+.background-page .section-block__body {
+  margin-top: var(--space-4);
+}

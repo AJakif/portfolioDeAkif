@@ -1,20 +1,20 @@
 /* SegmentedNav — tab switch on the Background page. */
 
 .segmented-nav {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  margin-top: 24px;
-  padding: 5px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--panel);
+  display: flex;
+  gap: clamp(4px, 1.2vw, 14px);
+  margin-top: 10px;
+  border-bottom: 1px solid var(--line);
 }
 
 .segmented-nav__link {
-  padding: 9px 22px;
-  border-radius: 999px;
+  display: grid;
+  min-height: 46px;
+  place-items: center;
+  padding: 8px clamp(8px, 1.2vw, 14px);
+  border-bottom: 2px solid transparent;
   color: var(--muted);
+  font-size: 0.95rem;
   text-decoration: none;
   font-weight: 700;
 }
@@ -25,14 +25,16 @@
 
 /* ".active" is added by NavLink for the current tab. */
 .segmented-nav__link.active {
-  background: var(--peri);
-  color: var(--on-apricot);
+  border-color: var(--apricot);
+  color: var(--text);
 }
 
 /* Phones: slightly smaller so all three tabs fit on one line. */
 @media (max-width: 640px) {
   .segmented-nav__link {
-    padding: 9px 15px;
-    font-size: 0.95rem;
+    flex: 1;
+    padding-inline: 4px;
+    font-size: 0.9rem;
+    text-align: center;
   }
 }

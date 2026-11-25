@@ -28,9 +28,10 @@
   bottom: calc(100% + 14px); /* sits above the trigger, with room for the pointer */
   z-index: 60;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 6px;
   width: max-content;
-  max-width: min(280px, calc(100vw - 32px));
+  max-width: min(280px, var(--tooltip-max-width, calc(100vw - 32px)));
   padding: var(--space-4);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius-sm);
@@ -42,6 +43,7 @@
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0;
+  overflow-wrap: anywhere;
   text-align: left;
 
   opacity: 0;

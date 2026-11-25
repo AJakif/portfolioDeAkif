@@ -1,7 +1,7 @@
 import './ViewHeader.css';
 
 /**
- * ViewHeader — the big title at the top of a page ("Work", "Background"...).
+ * ViewHeader — the main heading at the top of a page.
  *
  * @param {string} title    The page title.
  * @param {node}   children (optional) Anything to show under the title,
@@ -10,7 +10,7 @@ import './ViewHeader.css';
 export default function ViewHeader({ title, children }) {
   return (
     <div className="view-header">
-      <h1 className="view-header__title">{title}</h1>
+      <h1 className="view-header__title" tabIndex={-1}>{title}</h1>
       {children}
     </div>
   );

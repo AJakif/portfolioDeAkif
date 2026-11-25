@@ -1,7 +1,6 @@
 import { hero, profile } from '../../data/profile.js';
 import Button from '../ui/Button.jsx';
 import NetworkCanvas from './NetworkCanvas.jsx';
-import TypedRole from './TypedRole.jsx';
 import './Hero.css';
 
 /**
@@ -10,7 +9,7 @@ import './Hero.css';
  * Layers, from back to front:
  *   1. NetworkCanvas : the animated dots-and-lines background
  *   2. the vertical katakana lettering on the right
- *   3. the text: location chip, greeting, name, typed role, intro, buttons
+ *   3. the text: location, name, role, intro, links
  *
  * All text comes from `hero` and `profile` in src/data/profile.js.
  */
@@ -32,12 +31,11 @@ export default function Hero() {
           </span>
 
           <p className="hero__greeting">{hero.greeting}</p>
-          {/* .glitch + data-text: see src/styles/glitch.css */}
-          <h1 className="hero__name glitch" data-text={profile.name}>
+          <h1 className="hero__name glitch" tabIndex={-1} data-text={profile.name}>
             {profile.name}
           </h1>
 
-          <TypedRole roles={hero.roles} />
+          <p className="hero__role">{profile.title}</p>
 
           <p className="hero__intro">{hero.intro}</p>
 

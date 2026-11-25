@@ -21,16 +21,19 @@ export default function Header() {
     <header className="header">
       <div className="wrap header__inner">
         <div className="header__brand">
-          {/* .glitch + data-text: see src/styles/glitch.css */}
-          <Link className="header__brand-name glitch" to="/" data-text={profile.shortName}>
+          <Link
+            className="header__brand-name glitch"
+            to="/"
+            aria-label={`${profile.shortName}, home`}
+            data-text={profile.shortName}
+          >
             {profile.shortName}
           </Link>
 
           {/* The header is at the top of the screen, so the card opens BELOW
               the word, and lines up with its left edge so it stays on screen. */}
           <Tooltip {...kanaGloss} placement="below" align="start">
-            {/* .glitch-kana: a different glitch from the name, see src/styles/glitch.css */}
-            <span className="header__brand-kana glitch-kana" data-text={profile.kana}>
+            <span className="header__brand-kana glitch-kana" lang="ja" data-text={profile.kana}>
               {profile.kana}
             </span>
           </Tooltip>

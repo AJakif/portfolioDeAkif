@@ -4,7 +4,7 @@
 
 export const contact = {
   heading: 'Say hello.',
-  intro: "Pick what it's about, then reach me whichever way suits you.",
+  intro: 'Want to talk about a role, ask about a project, or go on a photo walk? Send me a note.',
 
   // The clock on the page shows the current time in this time zone.
   // Use any IANA time zone name, for example 'Europe/London'.
@@ -16,15 +16,14 @@ export const contact = {
  * Topic buttons.
  *   label   : text on the button
  *   subject : the email subject line used when that topic is selected
- * The first topic is selected when the page opens.
  */
 export const topics = [
-  { label: 'A role', subject: 'A role you might like' },
+  { label: 'A role', subject: 'Job opportunity' },
   { label: 'Research', subject: 'Research collaboration' },
   { label: 'A talk', subject: 'Speaking invitation' },
-  { label: 'One of my projects', subject: 'About one of your projects' },
+  { label: 'A project', subject: 'A question about your work' },
   { label: 'Photo or sketch collab', subject: 'Photography or sketch collaboration' },
-  { label: 'Just hello', subject: 'Hello' },
+  { label: 'Just saying hi', subject: 'Hello' },
 ];
 
 /** Words that scroll across the tape at the bottom of the Contact page. */
